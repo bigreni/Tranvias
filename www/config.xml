@@ -33,10 +33,10 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <gap:plugin name="org.apache.cordova.device-motion" />
     <gap:plugin name="org.apache.cordova.geolocation"/>
     <icon src="icon.png" gap:role="default" />
-    <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/Proverbs-Icon-36.png" />
-    <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/Proverbs-Icon-48.png" />
-    <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/Proverbs-Icon-72.png" />
-    <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icon/android/Proverbs-Icon-96.png" />
+    <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/Icon-36.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/Icon-48.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/Icon-72.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icon/android/Icon-96.png" />
     <icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
