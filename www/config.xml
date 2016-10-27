@@ -31,9 +31,13 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.geolocation"/>
+    <gap:plugin name="cordova-plugin-device" source="npm" />
+    <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
+    <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
+    <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
     <icon src="icon.png" gap:role="default" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/Icon-36.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/Icon-48.png" />
@@ -59,5 +63,4 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768" />
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
-    <access origin="*" />
 </widget>
