@@ -40,7 +40,8 @@
         };
         AdMob.setOptions(defaultOptions);
         registerAdEvents();
-    }
+        AndroidFullScreen.immersiveMode(successFunction, errorFunction);    
+        }
     // optional, in case respond to events or handle error
     function registerAdEvents() {
         /* deprecated
@@ -110,6 +111,14 @@
     //    var autoshow = document.getElementById('autoshow').checked;
     //    AdMob.prepareInterstitial({ adId: admobid.interstitial, autoShow: autoshow });
     //}
+
+    function successFunction()
+    {
+    }
+ 
+    function errorFunction(error)
+    {
+    }
 
    function loadInterstitial() {
         AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: true, autoShow: true });
