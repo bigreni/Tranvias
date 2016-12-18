@@ -1,15 +1,17 @@
     function onLoad() {
         if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-            document.addEventListener('deviceready', initApp, false);
+            document.addEventListener('deviceready', checkFirstUse, false);
         } else {
-            initApp();
+            checkFirstUse();
         }
     }
+
     var admobid = {};
     if (/(android)/i.test(navigator.userAgent)) {
         admobid = { // for Android
-            banner: 'ca-app-pub-1683858134373419/2524889484'
-            //banner: 'ca-app-pub-3886850395157773/3411786244'
+            banner: 'ca-app-pub-1683858134373419/2524889484',
+            interstitial:'ca-app-pub-1683858134373419/6232537882'
+           //banner: 'ca-app-pub-3886850395157773/3411786244'
             //interstitial: 'ca-app-pub-9249695405712287/3301233156'
         };
     }
@@ -18,7 +20,8 @@
         if (!AdMob) { alert('admob plugin not ready'); return; }
         initAd();
         // display the banner at startup
-        createSelectedBanner();
+        loadInterstitial();
+        //createSelectedBanner();
     }
     function initAd() {
         var defaultOptions = {
@@ -32,7 +35,7 @@
             bgColor: 'black', // color name, or '#RRGGBB'
             // x: integer,      // valid when set position to 0 / POS_XY
             // y: integer,      // valid when set position to 0 / POS_XY
-            isTesting: false // set to true, to receiving test ad for testing purpose
+            isTesting: true // set to true, to receiving test ad for testing purpose
             // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
         };
         AdMob.setOptions(defaultOptions);
@@ -56,11 +59,12 @@
 
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            alert('error: ' + data.error +
-                    ', reason: ' + data.reason +
-                    ', adNetwork:' + data.adNetwork +
-                    ', adType:' + data.adType +
-                    ', adEvent:' + data.adEvent); // adType: 'banner' or 'interstitial'
+            createSelectedBanner();
+            //alert('error: ' + data.error +
+            //        ', reason: ' + data.reason +
+            //        ', adNetwork:' + data.adNetwork +
+            //        ', adType:' + data.adType +
+            //        ', adEvent:' + data.adEvent); // adType: 'banner' or 'interstitial'
         });
         document.addEventListener('onAdLoaded', function (data) { });
         document.addEventListener('onAdPresent', function (data) { });
@@ -106,3 +110,46 @@
     //    var autoshow = document.getElementById('autoshow').checked;
     //    AdMob.prepareInterstitial({ adId: admobid.interstitial, autoShow: autoshow });
     //}
+
+   function loadInterstitial() {
+        AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: true, autoShow: true });
+    }
+
+
+   function checkFirstUse()
+    {
+        var currentVersion = 68;
+        var p = window.localStorage.getItem("currentVersion");
+        if (p == null) //App downloaded first time
+        {
+//Spanish
+            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por descargar la app', 'OK');
+            window.localStorage.setItem("currentVersion", currentVersion);
+        }
+        else if(p < currentVersion) //if app upgraded
+        {
+//Spanish
+            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por actualizar la app', 'OK');
+            window.localStorage.setItem("currentVersion", currentVersion);            
+        }
+        else
+        {
+            askRating();
+            initApp();
+        }
+    }
+
+function askRating()
+{
+  AppRate.preferences = {
+  openStoreInApp: true,
+  useLanguage:  'es',
+  usesUntilPrompt: 10,
+  promptAgainForEachNewVersion: false,
+  storeAppURL: {
+                android: 'market://details?id=com.tranvias.withads'
+               }
+};
+ 
+AppRate.promptForRating(false);
+}
