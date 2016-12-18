@@ -36,8 +36,8 @@ div#fullpage {
 }
 
 iframe#embed {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 90vh;
     border: none;
 }
 
