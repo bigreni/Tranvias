@@ -127,7 +127,7 @@
 
    function checkFirstUse()
     {
-        var currentVersion = 68;
+        var currentVersion = 69;
         var p = window.localStorage.getItem("currentVersion");
         if (p == null) //App downloaded first time
         {
