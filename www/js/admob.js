@@ -40,7 +40,7 @@
         };
         AdMob.setOptions(defaultOptions);
         registerAdEvents();
-        AndroidFullScreen.immersiveMode(successFunction, errorFunction);    
+//        AndroidFullScreen.immersiveMode(successFunction, errorFunction);    
         }
     // optional, in case respond to events or handle error
     function registerAdEvents() {
@@ -60,7 +60,7 @@
 
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            createSelectedBanner();
+            //createSelectedBanner();
             //alert('error: ' + data.error +
             //        ', reason: ' + data.reason +
             //        ', adNetwork:' + data.adNetwork +
@@ -127,25 +127,25 @@
 
    function checkFirstUse()
     {
-        var currentVersion = 69;
-        var p = window.localStorage.getItem("currentVersion");
-        if (p == null) //App downloaded first time
-        {
-//Spanish
-            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por descargar la app', 'OK');
-            window.localStorage.setItem("currentVersion", currentVersion);
-        }
-        else if(p < currentVersion) //if app upgraded
-        {
-//Spanish
-            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por actualizar la app', 'OK');
-            window.localStorage.setItem("currentVersion", currentVersion);            
-        }
-        else
-        {
+//        var currentVersion = 69;
+//        var p = window.localStorage.getItem("currentVersion");
+//        if (p == null) //App downloaded first time
+//        {
+////Spanish
+//            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por descargar la app', 'OK');
+//            window.localStorage.setItem("currentVersion", currentVersion);
+//        }
+//        else if(p < currentVersion) //if app upgraded
+//        {
+////Spanish
+//            navigator.notification.alert('Para ver el menú del teléfono, por favor, arrastra la pantalla desde arriba hacia abajo o desde abajo hacia arriba.', initApp, 'Gracias por actualizar la app', 'OK');
+//            window.localStorage.setItem("currentVersion", currentVersion);            
+//        }
+//        else
+//        {
             askRating();
             initApp();
-        }
+ //       }
     }
 
 function askRating()
