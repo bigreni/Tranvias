@@ -146,3 +146,8 @@ function askRating()
  
 AppRate.promptForRating(false);
 }
+
+function openWindow(url)
+{
+    var ref = cordova.InAppBrowser.open(url, '_system', 'location=yes');
+}
