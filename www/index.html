@@ -5,15 +5,23 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src 'self' http://www.itranvias.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src 'self' https://www.itranvias.com">
 <title>Tranvias</title>
-<link rel="stylesheet" href="css/index.css">
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<!-- Include the jQuery library -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Include the jQuery Mobile library -->
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 <body onload="onLoad();">
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/admob.js"></script>
         <div id="fullpage">
-            <iframe id="embed" src="http://www.itranvias.com" height="240" width="320"></iframe>
+		En este momento, estamos teniendo problemas con nuestro servidor. Los estamos arreglando. Mientras tanto, utilice este botón para acceder a itranvias.
+		<br>
+			<a href="javascript:openWindow('https://www.itranvias.com');" class="ui-btn ui-btn-b" target="_blank">iTranvias</a>
         </div>
 </body>
 </html>
