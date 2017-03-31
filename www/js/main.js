@@ -854,6 +854,7 @@ function getQuery(funcion,parametro){
     var server1 = $.ajax({
         type: "GET",
         url: "https://www.itranvias.com/queryitr_v3.php?",
+		datatype: "jsonp",
         timeout: '5000',
         cache: false,
         data: "dato="+parametro+"&func="+funcion,
