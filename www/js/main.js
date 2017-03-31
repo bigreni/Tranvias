@@ -131,8 +131,6 @@ function changeIdioma(idioma){
     localStorage.setItem('idultimomensaje','0')
     setIdiomaPicker(idioma);
     getDataInicial('20160101T000000', idioma)
-    trackerEventAnalytics('Click en Idioma', 'Idioma: '+idioma);
-
 
     getFile("https://raw.githubusercontent.com/bigreni/Tranvias/master/www/idioma.json",function(data){
       
@@ -418,38 +416,8 @@ function inicializar(){
     
   })
 
-  $('.btn-codpar').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón búsqueda por código');
-  });
-
-  $('.btn-cercanas').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón paradas cercanas');
-  });
-  $('.btn-lineas').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón consulta líneas');
-  });
-
-  $('.btn-configuracion').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón configuracion');
-  });
-  $('.btn-calcula-ruta').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón calcula ruta');
-  });
-    $('.btn-transbordos').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón transbordos');
-  });
-  $('.btn-precios').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón consulta precios');
-  });
-    $('.btn-novedades').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón Novedades');
-  });
-  $('#open-left').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Abrir menú desplegable');
-  });
-
+  
   $('.btn-favoritos').on('click',function(){
-    trackerEventAnalytics('Click en menú', 'Botón favoritos');
     $('#a-tab-fav-todos').click()   
     $('#li-tab-fav-todos').addClass('active') 
     $('#a-tab-fav-todos').addClass('active') 
@@ -461,8 +429,6 @@ function inicializar(){
   })  
 
   $('#codpar').submit(function(event){
-    trackerAnalytics('Ventana Resultado')
-    trackerEventAnalytics('Click','Búsqueda directa por código') 
     try{
 
       event.preventDefault();
@@ -560,8 +526,6 @@ function getLastParadas(ultimasParadas, addToDiv, template){
           event.preventDefault();
           $('#search').val(paradaReciente.idParada);
           $('#codpar').submit();
-
-          trackerEventAnalytics('Click', 'Consulta por paradas recientes')
 
         })
         lista_paradas.appendTo(addToDiv);
@@ -889,7 +853,7 @@ function getQuery(funcion,parametro){
     var time = getHora();
     var server1 = $.ajax({
         type: "GET",
-        url: "http://www.itranvias.com/queryitr_v3.php?",
+        url: "https://www.itranvias.com/queryitr_v3.php?",
         timeout: '5000',
         cache: false,
         data: "dato="+parametro+"&func="+funcion,
