@@ -38,7 +38,7 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
     <gap:plugin name="cordova-plugin-apprate" source="npm"/>
-	<gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
+	<gap:plugin name="cordova-plugin-crosswalk-webview" source="npm"/>
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
 	<allow-navigation href="https://www.itranvias.com/" />
@@ -49,7 +49,7 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/Icon-48.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/Icon-72.png" />
     <icon gap:platform="android" gap:qualifier="xhdpi" src="res/icon/android/Icon-96.png" />
-    <icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
+    <icon gap:platform="blackberry" src= "res/icon/blackberry/icon-80.png" />
     <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
     <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
