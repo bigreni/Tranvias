@@ -134,7 +134,7 @@ function changeIdioma(idioma){
     trackerEventAnalytics('Click en Idioma', 'Idioma: '+idioma);
 
 
-    getFile("http://www.itranvias.com/idioma.json",function(data){
+    getFile("https://raw.githubusercontent.com/bigreni/Tranvias/master/www/idioma.json",function(data){
       
       
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]));
@@ -836,7 +836,7 @@ function getDataInicial(fecha_peticion,idioma){
 
     })
 
-    getFile("http://www.itranvias.com/idioma.json",function(data){
+    getFile("https://raw.githubusercontent.com/bigreni/Tranvias/master/www/idioma.json",function(data){
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]))
       localStorage.setItem("idioma",idioma);
       traduccion = JSON.parse(localStorage.getItem("diccionario"))
