@@ -2,7 +2,8 @@
         if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
             document.addEventListener('deviceready', checkFirstUse, false);
         } else {
-            checkFirstUse();
+			var ref = cordova.InAppBrowser.open('https://www.itranvias.com', '_blank', 'location=no'); 
+            //checkFirstUse();
         }
     }
 
@@ -149,5 +150,5 @@ AppRate.promptForRating(false);
 
 function openWindow(url)
 {
-    var ref = cordova.InAppBrowser.open(url, '_system', 'location=yes');
+    var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
 }
