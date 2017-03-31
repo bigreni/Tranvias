@@ -150,5 +150,5 @@ AppRate.promptForRating(false);
 
 function openWindow(url)
 {
-    var ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
+    var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
 }
