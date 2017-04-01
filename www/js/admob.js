@@ -1,9 +1,9 @@
     function onLoad() {
-        if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-            document.addEventListener('deviceready', checkFirstUse, false);
-        } else {
+        //if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
+        //    document.addEventListener('deviceready', checkFirstUse, false);
+        //} else {
             checkFirstUse();
-        }
+        //}
     }
 
     var admobid = {};
@@ -128,8 +128,8 @@
    function checkFirstUse()
     {
 
-            askRating();
-            initApp();
+           // askRating();
+           // initApp();
     }
 
 function askRating()

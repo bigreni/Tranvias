@@ -40,6 +40,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady(){
   $(function(){
+	//onLoad();  
     lineas  = new Lineas();
     paradas  = new Paradas();
 
