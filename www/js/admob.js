@@ -128,8 +128,8 @@
    function checkFirstUse()
     {
 
-            //askRating();
-            //initApp();
+            askRating();
+            initApp();
     }
 
 function askRating()

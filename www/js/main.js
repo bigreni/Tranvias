@@ -435,8 +435,12 @@ function inicializar(){
       if(resultado_parada.refrescoResultado){
           clearTimeout(resultado_parada.refrescoResultado)
       }
-      var parada = paradas.getParada(parseInt($('#search').val(),10))
-      $('.menu-div').hide();
+      var parada = paradas.getParada(parseInt($('#search').val(),10));
+	  if(isNaN(parada)
+	  {	  
+		parada = paradas.getParada(parseInt($('#search').val(),10));
+      }
+	  $('.menu-div').hide();
       showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+parseInt($('#search').val(),10));
 
       resultado_parada.ajaxResultado(parada,'#resultado', '#template-tarjeta-tiempo' , '.tarjetas-tiempo-container',function(obj){
@@ -854,7 +858,7 @@ function getQuery(funcion,parametro){
     var server1 = $.ajax({
         type: "GET",
         url: "http://www.itranvias.es/queryitr_v3.php?",
-		datatype: "jsonp",
+		datatype: "json",
         timeout: '5000',
         cache: false,
         data: "dato="+parametro+"&func="+funcion,
