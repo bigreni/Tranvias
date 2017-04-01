@@ -125,7 +125,6 @@ var Tiempos = function(){
                         closeCollapsible('#ida')
                         closeCollapsible('#tab-result')
                         closeCollapsible('#resultado')
-                         trackerEventAnalytics('Click en Submenú', 'Añadir línea a favoritos');
                         console.log(codParada)
                         //$('.cabecera-direccion').click()
                         favorito_obj.setFavorito(0,parada_info);
@@ -148,7 +147,6 @@ var Tiempos = function(){
                         closeCollapsible('#ida')
                         closeCollapsible('#tab-result')
                         closeCollapsible('#resultado')
-                        trackerEventAnalytics('Click en Submenú', 'Eliminar línea a favoritos');
                         console.log(codParada)
                         //$('.cabecera-direccion').click()
                         //favorito_obj.setFavorito(1,lineaObj);
@@ -169,8 +167,6 @@ var Tiempos = function(){
             $('.add-fav-parada').off();
             $('.add-fav-parada').on('click',function(){
 
-                trackerEventAnalytics('Click en Submenú', 'Añadir parada a favoritos');
-
                 closeCollapsible('#resultado')                            
                 $('.cabecera-parada').click()
                 favorito_obj.setFavorito(0,parada_info);
@@ -179,7 +175,6 @@ var Tiempos = function(){
       
             $('.ver-mapa-parada').off();
             $('.ver-mapa-parada').on('click',function(){
-                trackerEventAnalytics('Click en Submenú', 'Consultar mapa de parada');
 
                 closeCollapsible('#resultado')
                 $('#modal-mapa-parada').find('.nombre-parada').html(parada_info.nombre).css('color','black')

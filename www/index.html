@@ -30,8 +30,10 @@
 
 </head>
 
-  <body >
-    <div id="main" style="display:none"> <!-- Main Container -->
+  <body onload="onLoad();">
+
+<script type="text/javascript" src="js/admob.js"></script>
+  <div id="main" style="display:none"> <!-- Main Container -->
 
       <!-- Sidebar -->
       
@@ -55,16 +57,6 @@
 
         <!-- Menu -->
         <ul class="tabs_toggle" >
-
-          <li class="tab col s3 hide-header  btn-menu-div btn-calcula-ruta">
-            <a href="#calcula-ruta" onclick=""class="no-child"><i class="ion-map"></i> <span class="lng-btn-menu-ruta" >Calcula tu ruta</span></a>
-          </li>
-          <li class="tab col s3 hide-header  btn-menu-div btn-transbordos">
-            <a href="#transbordos" onclick=""class="no-child"><i class="ion-ios-shuffle-strong"></i> <span class="lng-btn-menu-transbordo" >Transbordo gratuito</span></a>
-          </li>
-          <li class="tab col s3 hide-header  btn-menu-div btn-precios">
-            <a href="#tarifas" onclick=""class="no-child"><i class="ion-card"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
-          </li>   
           <li class="tab col s3 hide-header  btn-menu-div btn-cod-par">
             <a href="#codpar" onclick=""class="no-child"><i class="icon-buildings"></i> <span class="lng-btn-menu-cod" >Código</span></a>
           </li>    
@@ -77,15 +69,20 @@
           <li class="tab col s3 hide-header  btn-menu-div btn-cercanas">
             <a href="#cercanas" onclick="redibujarMapa()" class="no-child"><i class="ion-ios-navigate-outline"></i> <span class="lng-btn-menu-cer" >Cercanas</span></a>
           </li>        
-          <li class="tab col s3 hide-header  btn-menu-div btn-novedades">
-            <a href="#novedades" onclick=""class="no-child"><i class="ion-email"></i> <span class="lng-btn-menu-novedades" >Novedades</span></a>
-          </li>  
+          <li class="tab col s3 hide-header  btn-menu-div btn-calcula-ruta">
+            <a href="#calcula-ruta" onclick=""class="no-child"><i class="ion-map"></i> <span class="lng-btn-menu-ruta" >Calcula tu ruta</span></a>
+          </li>
+          <li class="tab col s3 hide-header  btn-menu-div btn-transbordos">
+            <a href="#transbordos" onclick=""class="no-child"><i class="ion-ios-shuffle-strong"></i> <span class="lng-btn-menu-transbordo" >Transbordo gratuito</span></a>
+          </li>
+          <li class="tab col s3 hide-header  btn-menu-div btn-precios">
+            <a href="#tarifas" onclick=""class="no-child"><i class="ion-card"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
+          </li>   
           <li class="tab col s3 hide-header  btn-menu-div btn-configuracion">
             <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="ion-gear-a"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
           </li>
 
         </ul>
-        <div id="version">iTranvias - V3.5.3 - Sistemas Olton</div>
       </ul>
       <!-- End of Sidebars -->
 

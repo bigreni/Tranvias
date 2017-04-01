@@ -99,7 +99,6 @@ var Favoritos = function(){
 								$('#codpar').submit();
 		  			
 								if($(this).hasClass('tarjeta-favorito-parada')){
-									trackerEventAnalytics('Click','Parada favorita')
 
 								}
 							})
@@ -118,7 +117,6 @@ var Favoritos = function(){
 							tarjeta_fav.click(function(){
 								hideHeader();	
 								if($(this).hasClass('tarjeta-favorito-linea')){
-									trackerEventAnalytics('Click','Línea favorita')
 
 								}
 							})

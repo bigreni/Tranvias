@@ -91,7 +91,6 @@ var Paradas = function(){
 		  		if(resultado_parada.refrescoResultado){
 		      		clearTimeout(resultado_parada.refrescoResultado)
 		  		}	
-				trackerAnalytics('Ventana Resultado')
 				var codigo_parada = $(this).data('codparada')
 				var parada = paradas.getParada(codigo_parada)
 				$('.menu-div').hide();
@@ -193,7 +192,6 @@ var Paradas = function(){
 					closeCollapsible('#ida')
 					closeCollapsible('#tab-result')
 					closeCollapsible('#resultado')
-		             trackerEventAnalytics('Click en Submenú', 'Añadir línea a favoritos');
 					console.log(lineaObj)
 					//$('.cabecera-direccion').click()
 					favorito_obj.setFavorito(1,lineaObj);
@@ -215,7 +213,6 @@ var Paradas = function(){
 					closeCollapsible('#ida')
 					closeCollapsible('#tab-result')
 					closeCollapsible('#resultado')
-		            trackerEventAnalytics('Click en Submenú', 'Eliminar línea a favoritos');
 					console.log(lineaObj)
 					//$('.cabecera-direccion').click()
 					//favorito_obj.setFavorito(1,lineaObj);
@@ -237,7 +234,6 @@ var Paradas = function(){
 			closeCollapsible('#tab-result')			
 			$('#modal-mapa-linea').find('.nombre-linea').html(lineaObj.lin_comer+' - '+lineaObj.nombre_dest+' - '+lineaObj.nombre_orig).css('color','#'+lineaObj.color)
 			$('#modal-mapa-linea').openModal();
-            trackerEventAnalytics('Click en Submenú', 'Consultar mapa de línea');
 
 			var options = {
         zoom: 10,
@@ -256,7 +252,6 @@ var Paradas = function(){
 		})
 
 		$('.ver-horarios-linea').off().on('click', function(){
-			trackerEventAnalytics('Click en Submenú', 'Consultar horarios línea');
 
 			closeCollapsible('#vuelta')
 			closeCollapsible('#ida')

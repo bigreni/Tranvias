@@ -2,8 +2,7 @@
         if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
             document.addEventListener('deviceready', checkFirstUse, false);
         } else {
-			var ref = cordova.InAppBrowser.open('https://www.itranvias.com', '_blank', 'location=no'); 
-            //checkFirstUse();
+            checkFirstUse();
         }
     }
 

@@ -43,8 +43,6 @@ var Lineas = function(){
 		tarjeta_linea.attr('data-codlinea',dataLinea.idlinea);
 		tarjeta_linea.css('display','block')
 		$(tarjeta_linea).click(function(){
-			trackerAnalytics('Ventana Paradas')
-
 			try{
 	          clearTimeout(paradas.refrescoBuses)
 	          clearTimeout(resultado_parada.refrescoResultado)
