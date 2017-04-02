@@ -60,17 +60,10 @@
 
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            //createSelectedBanner();
-            //alert('error: ' + data.error +
-            //        ', reason: ' + data.reason +
-            //        ', adNetwork:' + data.adNetwork +
-            //        ', adType:' + data.adType +
-            //        ', adEvent:' + data.adEvent); // adType: 'banner' or 'interstitial'
-        });
-        document.addEventListener('onAdLoaded', function (data) {
             document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
-			});
+        });
+        document.addEventListener('onAdLoaded', function (data) { });
         document.addEventListener('onAdPresent', function (data) { });
         document.addEventListener('onAdLeaveApp', function (data) { });
         document.addEventListener('onAdDismiss', function (data) {
