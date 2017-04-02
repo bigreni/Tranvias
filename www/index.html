@@ -27,12 +27,40 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
-
+        <style>
+            /* Hide all the app pages until jQuery Mobile inits to
+               avoid the Flash of Unstyled Content */
+            .splashscreen {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index:1001;
+                background: lightgrey;
+                text-shadow: none;
+                color: black;
+            }
+        </style>
 </head>
 
-<body onload="onLoad();">
+<body>
 <script type="text/javascript" src="js/admob.js"></script>
-  <div id="main" style="display:none"> <!-- Main Container -->
+        <div id="screen" class="splashscreen" style="display: none"></div>
+		        <script>
+            // Show the splash screen with a loading message
+            // Handler to hide the message when the loading stops
+            window.onload = function () {
+                onLoad();
+                //document.getElementById("screen").style.display = 'none';
+            };
+            document.getElementById("screen").innerHTML = 'Loading the map. This may take a few seconds...';
+            document.getElementById("screen").style.display = 'block';
+        </script>  
+  <div id="main" style="display:none; visibility:hidden;"> <!-- Main Container -->
 
       <!-- Sidebar -->
       
