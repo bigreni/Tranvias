@@ -435,9 +435,10 @@ function inicializar(){
       if(resultado_parada.refrescoResultado){
           clearTimeout(resultado_parada.refrescoResultado)
       }
-      var parada = paradas.getParada(parseInt($('#search').val(),10))
+	  var paradaId = parseInt($('#search').val(),10);
+      var parada = paradas.getParada(paradaId);
       $('.menu-div').hide();
-      showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+parseInt($('#search').val(),10));
+      showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+ paradaId);
 
       resultado_parada.ajaxResultado(parada,'#resultado', '#template-tarjeta-tiempo' , '.tarjetas-tiempo-container',function(obj){
         $('#content-message').hide();
