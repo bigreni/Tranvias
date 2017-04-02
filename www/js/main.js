@@ -435,7 +435,7 @@ function inicializar(){
       if(resultado_parada.refrescoResultado){
           clearTimeout(resultado_parada.refrescoResultado)
       }
-	  var paradaId = parseInt($('#search').val(),10);
+	  var paradaId =  parseInt($('#search').val(),10);
       var parada = paradas.getParada(paradaId);
       $('.menu-div').hide();
       showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+ paradaId);
@@ -445,7 +445,18 @@ function inicializar(){
         $('#resultado').show();
         $('#content-info').show()
 
-      }) 
+      })
+	  
+	  if(isNaN(paradaId))
+	  {
+		  paradaId = parseInt($('#search').val(),10);
+		        resultado_parada.ajaxResultado(parada,'#resultado', '#template-tarjeta-tiempo' , '.tarjetas-tiempo-container',function(obj){
+        $('#content-message').hide();
+        $('#resultado').show();
+        $('#content-info').show()
+      })
+	  }
+	  
       
       if(parada != false){
         addUltimasParadas(parada)  
