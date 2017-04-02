@@ -130,7 +130,7 @@
 
            askRating();
            initApp();
-		   onDeviceReady();
+		   //onDeviceReady();
     }
 
 function askRating()
