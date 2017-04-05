@@ -2,7 +2,7 @@
 <widget 
 id="com.tranvias.withads" 
 version="2.0.0"
-versionCode = "73" 
+versionCode = "74" 
 xmlns="http://www.w3.org/ns/widgets"
 xmlns:gap="http://phonegap.com/ns/1.0"
 >

@@ -50,6 +50,8 @@
             document.getElementById('fullpage').style.display = 'block';
             //document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
+            var iframe = document.getElementById('embed');
+            iframe.src = iframe.src;
         });
         document.addEventListener('onAdLoaded', function (data) { });
         document.addEventListener('onAdPresent', function (data) { });
@@ -58,6 +60,8 @@
             document.getElementById('fullpage').style.display = 'block';
             //document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
+            var iframe = document.getElementById('embed');
+            iframe.src = iframe.src;
 			});
     }
 
@@ -81,12 +85,13 @@
    function checkFirstUse()
     {
 
-           //askRating();
-           //initApp();
+           askRating();
+           initApp();
 		   //onDeviceReady();
-            document.getElementById('fullpage').style.display = 'block';
-            document.getElementById('screen').style.display = 'none';
-
+           // document.getElementById('fullpage').style.display = 'block';
+           // document.getElementById('screen').style.display = 'none';
+           // var iframe = document.getElementById('embed');
+           // iframe.src = iframe.src;
     }
 
 function askRating()
