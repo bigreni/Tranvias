@@ -1,9 +1,9 @@
     function onLoad() {
-        //if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-        //    document.addEventListener('deviceready', checkFirstUse, false);
-        //} else {
+        if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
+            document.addEventListener('deviceready', checkFirstUse, false);
+        } else {
             checkFirstUse();
-        //}
+        }
     }
 
     var admobid = {};
@@ -86,13 +86,13 @@
    function checkFirstUse()
     {
 
-           //askRating();
-           //initApp();
+           askRating();
+           initApp();
 		   //onDeviceReady();
-            document.getElementById('fullpage').style.display = 'block';
-            document.getElementById('screen').style.display = 'none';
-            var iframe = document.getElementById('embed');
-            iframe.src = iframe.src;
+           // document.getElementById('fullpage').style.display = 'block';
+           // document.getElementById('screen').style.display = 'none';
+           // var iframe = document.getElementById('embed');
+           // iframe.src = iframe.src;
     }
 
 function askRating()
@@ -108,11 +108,6 @@ function askRating()
 };
  
 AppRate.promptForRating(false);
-}
-
-function loadApp()
-{
-    
 }
 
 function onDeviceReady(){
