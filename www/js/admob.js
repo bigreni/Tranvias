@@ -10,7 +10,7 @@
     if (/(android)/i.test(navigator.userAgent)) {
         admobid = { // for Android
             banner: 'ca-app-pub-1683858134373419/2524889484',
-            interstitial:'ca-app-pub-1683858134373419/6232537882'
+            interstitial:'ca-app-pub-9249695405712287/8454477151'
            //banner: 'ca-app-pub-3886850395157773/3411786244'
             //interstitial: 'ca-app-pub-9249695405712287/3301233156'
         };
@@ -22,6 +22,7 @@
         // display the banner at startup
         loadInterstitial();
         //createSelectedBanner();
+        loadApp();
     }
     function initAd() {
         var defaultOptions = {
@@ -85,13 +86,13 @@
    function checkFirstUse()
     {
 
-           askRating();
-           initApp();
+           //askRating();
+           //initApp();
 		   //onDeviceReady();
-           // document.getElementById('fullpage').style.display = 'block';
-           // document.getElementById('screen').style.display = 'none';
-           // var iframe = document.getElementById('embed');
-           // iframe.src = iframe.src;
+            document.getElementById('fullpage').style.display = 'block';
+            document.getElementById('screen').style.display = 'none';
+            var iframe = document.getElementById('embed');
+            iframe.src = iframe.src;
     }
 
 function askRating()
@@ -109,9 +110,9 @@ function askRating()
 AppRate.promptForRating(false);
 }
 
-function openWindow(url)
+function loadApp()
 {
-    var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+    
 }
 
 function onDeviceReady(){
