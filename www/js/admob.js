@@ -15,6 +15,12 @@
             //interstitial: 'ca-app-pub-9249695405712287/3301233156'
         };
     }
+    else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
+     admobid = {
+            banner: 'ca-app-pub-1683858134373419/2524889484',
+            interstitial:'ca-app-pub-9249695405712287/8454477151'
+    };
+  }
 
     function initApp() {
         if (!AdMob) { alert('admob plugin not ready'); return; }
