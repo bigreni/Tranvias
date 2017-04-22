@@ -54,21 +54,25 @@
 
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            document.getElementById('fullpage').style.display = 'block';
-            //document.getElementById('main').style.visibility = 'visible';
+            //// old version  
+            //var iframe = document.getElementById('embed');
+            //iframe.src = iframe.src;
+            //document.getElementById('fullpage').style.display = 'block';
+            //// New version
+            document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
-            var iframe = document.getElementById('embed');
-            iframe.src = iframe.src;
         });
         document.addEventListener('onAdLoaded', function (data) { });
         document.addEventListener('onAdPresent', function (data) { });
         document.addEventListener('onAdLeaveApp', function (data) { });
         document.addEventListener('onAdDismiss', function (data) {
-            document.getElementById('fullpage').style.display = 'block';
-            //document.getElementById('main').style.visibility = 'visible';
+            //// old version  
+            //var iframe = document.getElementById('embed');
+            //iframe.src = iframe.src;
+            //document.getElementById('fullpage').style.display = 'block';
+            //// New version
+            document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
-            var iframe = document.getElementById('embed');
-            iframe.src = iframe.src;
 			});
     }
 
@@ -94,9 +98,12 @@
 
            askRating();
            initApp();
-		   //onDeviceReady();
-           // document.getElementById('fullpage').style.display = 'block';
-           // document.getElementById('screen').style.display = 'none';
+		   ////onDeviceReady();
+            ////New version
+            //document.getElementById('screen').style.display = 'none';
+            //document.getElementById('main').style.visibility = 'visible';
+           ////Old Version 
+           //document.getElementById('fullpage').style.display = 'block';
            // var iframe = document.getElementById('embed');
            // iframe.src = iframe.src;
     }

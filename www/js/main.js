@@ -865,7 +865,7 @@ function getQuery(funcion,parametro){
     var time = getHora();
     var server1 = $.ajax({
         type: "GET",
-        url: "http://www.itranvias.es/queryitr_v3.php?",
+        url: "http://www.itranvias.com/queryitr_v3.php?",
 		datatype: "json",
         timeout: '5000',
         cache: false,
