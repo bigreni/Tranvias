@@ -18,7 +18,7 @@
     else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
      admobid = {
             banner: 'ca-app-pub-1683858134373419/2524889484',
-            interstitial:'ca-app-pub-9249695405712287/8454477151'
+            interstitial:'ca-app-pub-9249695405712287/9598291958'
     };
   }
 
@@ -109,6 +109,7 @@ function askRating()
   usesUntilPrompt: 10,
   promptAgainForEachNewVersion: false,
   storeAppURL: {
+                ios: '1227250068',
                 android: 'market://details?id=com.tranvias.withads'
                }
 };

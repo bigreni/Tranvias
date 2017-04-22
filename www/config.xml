@@ -2,7 +2,7 @@
 <widget 
 id="com.tranvias.withads" 
 version="2.0.0"
-versionCode = "76" 
+versionCode = "77" 
 xmlns="http://www.w3.org/ns/widgets"
 xmlns:gap="http://phonegap.com/ns/1.0"
 >
@@ -31,15 +31,14 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
-	<preference name="phonegap-version" value="cli-6.3.0" />
     <preference name="StatusBarOverlaysWebView" value="false" />
+    <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
     <gap:plugin name="cordova-plugin-device" source="npm" />
     <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
     <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
     <gap:plugin name="cordova-plugin-apprate" source="npm"/>	
-    <gap:plugin name="cordova-plugin-statusbar" source="npm"/>
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
 	<allow-navigation href="data:*" />
@@ -54,6 +53,11 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
     <icon gap:platform="ios" height="114" src="res/icon/ios/icon-57-2x.png" width="114" />
     <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
+    <icon gap:platform="ios" height="120" src="res/icon/ios/Icon-App-60x60@2x.png" width="120" />
+    <icon gap:platform="ios" height="76" src="res/icon/ios/Icon-App-76x76@1x.png" width="76" />
+    <icon gap:platform="ios" height="152" src="res/icon/ios/Icon-App-76x76@2x   .png" width="152" />
+    <icon gap:platform="ios" height="50" src="res/icon/ios/Icon-Small-50.png" width="50" />
+    <icon gap:platform="ios" height="100" src="res/icon/ios/Icon-Small-50@2x.png" width="100" />
     <icon gap:platform="webos" src="res/icon/webos/icon-64.png" />
     <icon gap:platform="winphone" src="res/icon/windows-phone/icon-48.png" />
     <icon gap:platform="winphone" gap:role="background" src="res/icon/windows-phone/icon-173-tile.png" />
