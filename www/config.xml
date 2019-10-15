@@ -1,21 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget 
 id="com.tranvias.withads" 
-version="2.0.1"
+version="2.1"
 versionCode = "77" 
 xmlns="http://www.w3.org/ns/widgets"
 xmlns:gap="http://phonegap.com/ns/1.0"
 >
     <name>Tranvias Coruña</name>
     <description>
-        Coruña Bus App with ads.
+        Coruña Bus App.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
     </author>
     <content src="index.html" />
     <preference name="android-build-tool" value="gradle" /> 
-    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" >
+        <variable name="ADMOB_APP_ID" value="pub-9249695405712287"></variable>
+    </gap:plugin>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
@@ -29,7 +32,8 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="21" />
+    <preference name="android-targetSdkVersion" value="28" />
     <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <gap:plugin name="cordova-plugin-statusbar" source="npm"/>

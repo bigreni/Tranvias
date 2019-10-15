@@ -2,7 +2,7 @@
         if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
             document.addEventListener('deviceready', checkFirstUse, false);
         } else {
-            checkFirstUse();
+            notFirstUse();
         }
     }
 
@@ -106,6 +106,12 @@
            //document.getElementById('fullpage').style.display = 'block';
            // var iframe = document.getElementById('embed');
            // iframe.src = iframe.src;
+    }
+
+   function notFirstUse()
+    {
+        document.getElementById('main').style.visibility = 'visible';
+        document.getElementById('screen').style.display = 'none';
     }
 
 function askRating()
