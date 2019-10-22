@@ -62,7 +62,9 @@
             document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
         });
-        document.addEventListener('onAdLoaded', function (data) { });
+        document.addEventListener('onAdLoaded', function (data) {
+            AdMob.showInterstitial();
+        });
         document.addEventListener('onAdPresent', function (data) { });
         document.addEventListener('onAdLeaveApp', function (data) { });
         document.addEventListener('onAdDismiss', function (data) {
@@ -88,8 +90,20 @@
     {
     }
 
-   function loadInterstitial() {
-        AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: true });
+    function loadInterstitial() {
+        if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+            //AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: false });
+            document.getElementById('main').style.visibility = 'visible';
+            document.getElementById('screen').style.display = 'none';    
+        } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
+            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: true });
+            //document.getElementById('main').style.visibility = 'visible';
+            //document.getElementById('screen').style.display = 'none';    
+        } else
+        {
+            document.getElementById('main').style.visibility = 'visible';
+            document.getElementById('screen').style.display = 'none';   
+        }
     }
 
 

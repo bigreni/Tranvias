@@ -40,7 +40,7 @@
                 left: 0;
                 right: 0;
                 z-index:1001;
-                background: lightgrey;
+                background: url(https://s3.us-east-2.amazonaws.com/bigreni.com/img/status.gif) no-repeat center center;
                 text-shadow: none;
                 color: black;
             }
@@ -48,7 +48,11 @@
 </head>
 
 <body>
-<script type="text/javascript" src="js/admob.js"></script>
+    <script type="text/javascript">
+        var cachebuster = Math.round(new Date().getTime() / 1000);
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/admob.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        //document.write('<script type="text/javascript" src="js/admob.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+    </script>
         <div id="screen" class="splashscreen" style="display: none"></div>
 		        <script>
             // Show the splash screen with a loading message
@@ -57,7 +61,7 @@
                 onLoad();
                 //document.getElementById("screen").style.display = 'none';
             };
-            document.getElementById("screen").innerHTML = 'Cargando... ';
+            //document.getElementById("screen").innerHTML = 'Cargando... ';
             document.getElementById("screen").style.display = 'block';
         </script>  
   <div id="main" style="display:none; visibility:hidden;"> <!-- Main Container -->
