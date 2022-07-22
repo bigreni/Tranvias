@@ -132,7 +132,7 @@ function changeIdioma(idioma){
     setIdiomaPicker(idioma);
     getDataInicial('20160101T000000', idioma)
 
-    getFile("https://raw.githubusercontent.com/bigreni/Tranvias/master/www/idioma.json",function(data){
+    getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
       
       
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]));
@@ -812,7 +812,7 @@ function getDataInicial(fecha_peticion,idioma){
 
     })
 
-    getFile("https://raw.githubusercontent.com/bigreni/Tranvias/master/www/idioma.json",function(data){
+    getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]))
       localStorage.setItem("idioma",idioma);
       traduccion = JSON.parse(localStorage.getItem("diccionario"))
@@ -827,7 +827,7 @@ function getDataInicial(fecha_peticion,idioma){
     })    
     return true;
   }catch(err){
-    
+    alert(err);
     Materialize.toast(traducir("lng-toast-error-datos-ini","Petición datos iniciales"),5000)
 
     return false;
@@ -859,7 +859,7 @@ function getFile(url,callback){
   });
 }
 function getQuery(funcion,parametro){
-  showAd();
+    showAd();
     var datos;
     var state;
     var time = getHora();

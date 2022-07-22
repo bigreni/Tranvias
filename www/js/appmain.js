@@ -111,7 +111,6 @@
     function showAd()
     {
         document.getElementById("screen").style.display = 'block'; 
-        alert('1');    
         if ((/(android|windows phone)/i.test(navigator.userAgent))) {
             AdMob.isInterstitialReady(function(isready){
                 if(isready) 
