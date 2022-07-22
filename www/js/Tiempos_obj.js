@@ -216,6 +216,7 @@ var Tiempos = function(){
 
     this.tiempoProximoBus = function(parada_info,callback){
         try{
+            showAd();
             proximoBusAjax = getQuery(0,parada_info.idParada);                 
 
             proximoBusAjax.fail(function(data){
