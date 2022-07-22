@@ -216,7 +216,6 @@ var Tiempos = function(){
 
     this.tiempoProximoBus = function(parada_info,callback){
         try{
-            showAd();
             proximoBusAjax = getQuery(0,parada_info.idParada);                 
 
             proximoBusAjax.fail(function(data){
@@ -328,6 +327,7 @@ var Tiempos = function(){
         $(div_padre).find('i.icono-refresco').toggleClass('ion-refresh ion-load-a')
         
         try{
+            showAd();
             resultadoObj.resultadoAjax = getQuery(0,parada_info.idParada);                 
             
             resultadoObj.resultadoAjax.fail(function(data){
