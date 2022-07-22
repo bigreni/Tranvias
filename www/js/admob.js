@@ -63,7 +63,9 @@
             document.getElementById('screen').style.display = 'none';
         });
         document.addEventListener('onAdLoaded', function (data) {
-            AdMob.showInterstitial();
+            //AdMob.showInterstitial();
+            document.getElementById('main').style.visibility = 'visible';
+            document.getElementById('screen').style.display = 'none';
         });
         document.addEventListener('onAdPresent', function (data) { });
         document.addEventListener('onAdLeaveApp', function (data) { });
@@ -104,6 +106,19 @@
             document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';   
         }
+    }
+
+    function showAd()
+    {
+        document.getElementById("screen").style.display = 'block'; 
+        alert('1');    
+        if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+            AdMob.isInterstitialReady(function(isready){
+                if(isready) 
+                    AdMob.showInterstitial();
+            });
+        }
+        document.getElementById("screen").style.display = 'none'; 
     }
 
 

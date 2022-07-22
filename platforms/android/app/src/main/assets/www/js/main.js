@@ -859,7 +859,7 @@ function getFile(url,callback){
   });
 }
 function getQuery(funcion,parametro){
-
+  showAd();
     var datos;
     var state;
     var time = getHora();

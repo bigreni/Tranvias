@@ -2,7 +2,7 @@
 
 platform :ios, '11.0'
 
-target 'C:\Users\nai\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruña' do
-	project 'C:\Users\nai\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruña.xcodeproj'
+target 'C:\Users\naiar\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruña' do
+	project 'C:\Users\naiar\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruña.xcodeproj'
 
 end
