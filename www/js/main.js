@@ -789,7 +789,7 @@ function getDataInicial(fecha_peticion,idioma){
         if (lineas.objetoLineas === null){
 
           console.log('lineas === null');
-          showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error 400"),'ion-bug','#lineas-container');
+          showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error 400"),'fa fa-bug','#lineas-container');
 
         }else{
           
@@ -801,7 +801,7 @@ function getDataInicial(fecha_peticion,idioma){
 
       }catch(e){
         console.log(e)
-        showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error 400"),'ion-bug','#lineas-container')
+        showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error"),'fa fa-bug','#lineas-container')
 
       }
 

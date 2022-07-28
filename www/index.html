@@ -3,7 +3,7 @@
 <html lang="es-ES">
 
   <head>
-    <title>iTranvías</title>
+    <title>Tranvías Coruna</title>
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="x-ua-compatible">
@@ -20,12 +20,18 @@
 
 
     <!-- Styles -->
-    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/keyframes.css" rel="stylesheet" type="text/css">
     <link href="css/ionicons.css" rel="stylesheet" type="text/css">
     <link href="css/itranvias-icons-style.css" rel="stylesheet" type="text/css">
     <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+      var cachebuster = Math.round(new Date().getTime() / 1000);
+      // document.write('<link rel="stylesheet" type="text/css" href="css/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+      document.write('<link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+  </script>
+    <link href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css" rel="stylesheet">    
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
         <style>
             /* Hide all the app pages until jQuery Mobile inits to
@@ -49,7 +55,6 @@
 
 <body>
     <script type="text/javascript">
-        var cachebuster = Math.round(new Date().getTime() / 1000);
         document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
         // document.write('<script type="text/javascript" src="js/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
     </script>
@@ -89,13 +94,13 @@
         <!-- Menu -->
         <ul class="tabs_toggle" >
           <li class="tab col s3 hide-header  btn-menu-div btn-cod-par">
-            <a href="#codpar" onclick=""class="no-child"><i class="icon-buildings"></i> <span class="lng-btn-menu-cod" >Código</span></a>
+            <a href="#codpar" onclick=""class="no-child"><i class="fa fa-search"></i> <span class="lng-btn-menu-cod" >Código</span></a>
           </li>    
           <li class="tab col s3 hide-header  btn-menu-div btn-favoritos">
-            <a href="#favoritos" onclick=""class="no-child"><i class="ion-android-star"></i> <span class="lng-btn-menu-fav" >Favoritos</span></a>
+            <a href="#favoritos" onclick=""class="no-child"><i class="fa fa-star-o"></i> <span class="lng-btn-menu-fav" >Favoritos</span></a>
           </li> 
           <li class="tab col s3 hide-header  btn-menu-div btn-lineas">
-            <a href="#lineas" onclick="" class="no-child"><i class="ion-ios-loop"></i> <span class="lng-btn-menu-lin" >Líneas</span></a>
+            <a href="#lineas" onclick="" class="no-child"><i class="fa fa-bus"></i> <span class="lng-btn-menu-lin" >Líneas</span></a>
           </li>    
           <!-- <li class="tab col s3 hide-header  btn-menu-div btn-cercanas">
             <a href="#cercanas" onclick="redibujarMapa()" class="no-child"><i class="ion-ios-navigate-outline"></i> <span class="lng-btn-menu-cer" >Cercanas</span></a>
@@ -107,10 +112,10 @@
             <a href="#transbordos" onclick=""class="no-child"><i class="ion-ios-shuffle-strong"></i> <span class="lng-btn-menu-transbordo" >Transbordo gratuito</span></a>
           </li> -->
           <li class="tab col s3 hide-header  btn-menu-div btn-precios">
-            <a href="#tarifas" onclick=""class="no-child"><i class="ion-card"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
+            <a href="#tarifas" onclick=""class="no-child"><i class="fa fa-ticket"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
           </li>   
           <li class="tab col s3 hide-header  btn-menu-div btn-configuracion">
-            <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="ion-gear-a"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
+            <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="fa fa-gear"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
           </li>
 
         </ul>
@@ -146,19 +151,19 @@
           <ul class="tabs tabs_toggle  opcion-menu-index2" style="width: 100%;overflow-x:overlay;overflow-y:hidden">
             <li id="li_codpar" class="tab col s3 hide-header btn-menu-div btn-codpar">
               <a class="" href="#codpar">
-                <div class="icon-menu"><i class="icon-buildings"></i><span class="visuallyhidden">Código</span></div>
+                <div class="icon-menu"><i class="fa fa-search"></i><span class="visuallyhidden">Código</span></div>
                 <div class="nom-menu"><span class="lng-btn-codigo">Código</span></div>
               </a>
             </li>
             <li id="li_favoritos" class="tab col s3 hide-header  btn-menu-div btn-favoritos">
               <a class="" href="#favoritos">
-                <div class="icon-menu"><i class="ion-android-star"></i><span class="visuallyhidden">Favoritos</span></div>
+                <div class="icon-menu"><i class="fa fa-star-o"></i><span class="visuallyhidden">Favoritos</span></div>
                 <div class="nom-menu"><span class="lng-btn-fav">Favoritos</span></div>
               </a>
             </li>
             <li id="li_lineas" class="tab col s3 hide-header btn-menu-div btn-lineas">
               <a class="" href="#lineas">
-                <div class="icon-menu"><i class="ion-ios-loop"></i><span class="visuallyhidden">Líneas</span></div>
+                <div class="icon-menu"><i class="fa fa-bus"></i><span class="visuallyhidden">Líneas</span></div>
                 <div class="nom-menu"><span class="lng-btn-lineas">Líneas</span></div>
               </a>
             </li>
