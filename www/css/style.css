@@ -173,7 +173,7 @@ h1.title.big {
     color: #1c212a !important;
 }
 .primary-color {
-    background-color: #3678f4
+    background-color: #F44336
  !important;
 }
 .primary-border {
@@ -599,7 +599,7 @@ footer.page-footer .footer-copyright {
   width: 100%;
   position: relative;
   overflow: auto;
-  background-color: #3678f4;
+  background-color: #F44336;
 }
 
 .sidenav-header .nav-avatar {
@@ -997,7 +997,7 @@ textarea.materialize-textarea {
     -webkit-transition: all 0.3s ease-in
 }
 .controls button.active {
-    background: #3678f4;
+    background: #F44336;
     color: #fff;
     border-color: #1c212a;
 }
@@ -2003,10 +2003,10 @@ ul.faq {
   color: #f7f7f7 !important; 
 }
 .background-color-itranvias{
-  background-color: #3678f4 !important;
+  background-color: #F44336 !important;
 }
 .font-color-itranvias{
-  color: #3678f4 !important; 
+  color: #F44336 !important; 
 }
 .opacity-red{
   /*background-color: #E9161F !important;*/
@@ -2027,7 +2027,7 @@ ul.faq {
   width: 100%;
   text-align: center;
   font-size: 5em;
-  color: #3678f4 !important;
+  color: #F44336 !important;
 }
 #message .texto, 
 .message .texto,
@@ -2157,7 +2157,7 @@ ul.faq {
 .opcion-menu-index{
   margin: 0 10px;
   padding: 10px 0;
-  border-bottom: 1px solid #3678f4;
+  border-bottom: 1px solid #F44336;
   position: relative;
 }
 .opcion-menu-index p{
@@ -2185,7 +2185,7 @@ div.buscar-codigo-parada .input-field{
 div.buscar-codigo-parada .btn input{
   border-width: 0px;
   border-style: none !important;
-  background-color: #3678f4;
+  background-color: #F44336;
   padding: 0px 6px;
 }
 
@@ -2827,7 +2827,7 @@ nav.buscar-codigo-parada input#search{
   font-size: 13px;
 }
 input[type=range]+.thumb{
-  background-color: #3678f4 !important;
+  background-color: #F44336 !important;
 
 }
 
