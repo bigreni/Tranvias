@@ -11,8 +11,6 @@
         admobid = { // for Android
             banner: 'ca-app-pub-1683858134373419/2524889484',
             interstitial:'ca-app-pub-9249695405712287/8454477151'
-           //banner: 'ca-app-pub-3886850395157773/3411786244'
-            //interstitial: 'ca-app-pub-9249695405712287/3301233156'
         };
     }
     else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
@@ -32,32 +30,18 @@
     }
     function initAd() {
         var defaultOptions = {
-            // bannerId: admobid.banner,
-            // interstitialId: admobid.interstitial,
-            // adSize: 'SMART_BANNER',
-            // width: integer, // valid when set adSize 'CUSTOM'
-            // height: integer, // valid when set adSize 'CUSTOM'
             position: AdMob.AD_POSITION.BOTTOM_CENTER,
-            // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
             bgColor: 'black', // color name, or '#RRGGBB'
-            // x: integer,      // valid when set position to 0 / POS_XY
-            // y: integer,      // valid when set position to 0 / POS_XY
             isTesting: false // set to true, to receiving test ad for testing purpose
-            // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
         };
         AdMob.setOptions(defaultOptions);
         registerAdEvents();
-//        AndroidFullScreen.immersiveMode(successFunction, errorFunction);    
         }
     // optional, in case respond to events or handle error
     function registerAdEvents() {
 
         // new events, with variable to differentiate: adNetwork, adType, adEvent
         document.addEventListener('onAdFailLoad', function (data) {
-            //// old version  
-            //var iframe = document.getElementById('embed');
-            //iframe.src = iframe.src;
-            //document.getElementById('fullpage').style.display = 'block';
             //// New version
             document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
@@ -68,12 +52,11 @@
             document.getElementById('screen').style.display = 'none';
         });
         document.addEventListener('onAdPresent', function (data) { });
-        document.addEventListener('onAdLeaveApp', function (data) { });
+        document.addEventListener('onAdLeaveApp', function (data) { 
+          document.getElementById('main').style.visibility = 'visible';
+          document.getElementById('screen').style.display = 'none';
+        });
         document.addEventListener('onAdDismiss', function (data) {
-            //// old version  
-            //var iframe = document.getElementById('embed');
-            //iframe.src = iframe.src;
-            //document.getElementById('fullpage').style.display = 'block';
             //// New version
             document.getElementById('main').style.visibility = 'visible';
             document.getElementById('screen').style.display = 'none';
