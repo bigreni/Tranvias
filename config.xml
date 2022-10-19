@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.tranvias.withads" version="3.1" versionCode="81" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Tranvias Coruña</name>
+    <name>Tranvias Coruna</name>
     <description>
         Coruña Bus App.
     </description>
