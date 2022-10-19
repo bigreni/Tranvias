@@ -173,7 +173,7 @@ h1.title.big {
     color: #1c212a !important;
 }
 .primary-color {
-    background-color: #8b443f
+    background-color: #F44336
  !important;
 }
 .primary-border {
@@ -592,7 +592,16 @@ footer.page-footer .footer-copyright {
     width: 100%;
     position: relative;
     overflow: auto;
+    background-color: #3561b4;
 }
+
+.sidenav-lang {
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  background-color: #F44336;
+}
+
 .sidenav-header .nav-avatar {
     display: flex;
     align-items: center;

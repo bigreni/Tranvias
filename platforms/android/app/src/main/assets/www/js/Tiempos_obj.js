@@ -327,6 +327,7 @@ var Tiempos = function(){
         $(div_padre).find('i.icono-refresco').toggleClass('ion-refresh ion-load-a')
         
         try{
+            showAd();
             resultadoObj.resultadoAjax = getQuery(0,parada_info.idParada);                 
             
             resultadoObj.resultadoAjax.fail(function(data){

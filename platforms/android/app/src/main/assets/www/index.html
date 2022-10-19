@@ -3,7 +3,7 @@
 <html lang="es-ES">
 
   <head>
-    <title>iTranvías</title>
+    <title>Tranvías Coruna</title>
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="x-ua-compatible">
@@ -20,12 +20,19 @@
 
 
     <!-- Styles -->
-    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/keyframes.css" rel="stylesheet" type="text/css">
     <link href="css/ionicons.css" rel="stylesheet" type="text/css">
     <link href="css/itranvias-icons-style.css" rel="stylesheet" type="text/css">
     <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+      var cachebuster = Math.round(new Date().getTime() / 1000);
+      // document.write('<link rel="stylesheet" type="text/css" href="css/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+      document.write('<link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+  </script>
+    <link href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css" rel="stylesheet">    
+    <!-- <link href="/css/style.css" rel="stylesheet">     -->
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
         <style>
             /* Hide all the app pages until jQuery Mobile inits to
@@ -49,9 +56,8 @@
 
 <body>
     <script type="text/javascript">
-        var cachebuster = Math.round(new Date().getTime() / 1000);
-        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/admob.js?cb=' +cachebuster+'"></scr' + 'ipt>');
-        //document.write('<script type="text/javascript" src="js/admob.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
     </script>
         <div id="screen" class="splashscreen" style="display: none"></div>
 		        <script>
@@ -73,13 +79,13 @@
           <div class="sidenav-header">
 
 
-            <nav class="searchnave">
+            <nav class="sidenav-lang">
               <!-- Social Bar -->
               <div class="nav-social">
                 <span style="float: left;height: 44px;line-height: 44px;padding: 0;left: 9px;"><span class="lng-text-idioma" >IDIOMA</span>&nbsp&nbsp </span>
-                <span style="float:left"><a href="javascript:changeIdioma('gl');" class="idioma gl">&nbsp GAL &nbsp </a></span>
                 <span style="float:left"><a href="javascript:changeIdioma('es');" class="idioma es">&nbsp ES &nbsp</a></span>
                 <span style="float:left"><a href="javascript:changeIdioma('en');" class="idioma en">&nbsp EN &nbsp</a></span>
+                <span style="float:left"><a href="javascript:changeIdioma('gl');" class="idioma gl">&nbsp GAL &nbsp </a></span>
               </div>
             </nav>
             <!-- Avatar -->
@@ -89,28 +95,28 @@
         <!-- Menu -->
         <ul class="tabs_toggle" >
           <li class="tab col s3 hide-header  btn-menu-div btn-cod-par">
-            <a href="#codpar" onclick=""class="no-child"><i class="icon-buildings"></i> <span class="lng-btn-menu-cod" >Código</span></a>
+            <a href="#codpar" onclick=""class="no-child"><i class="fa fa-search"></i> <span class="lng-btn-menu-cod" >Código</span></a>
           </li>    
           <li class="tab col s3 hide-header  btn-menu-div btn-favoritos">
-            <a href="#favoritos" onclick=""class="no-child"><i class="ion-android-star"></i> <span class="lng-btn-menu-fav" >Favoritos</span></a>
+            <a href="#favoritos" onclick=""class="no-child"><i class="fa fa-star-o"></i> <span class="lng-btn-menu-fav" >Favoritos</span></a>
           </li> 
           <li class="tab col s3 hide-header  btn-menu-div btn-lineas">
-            <a href="#lineas" onclick="" class="no-child"><i class="ion-ios-loop"></i> <span class="lng-btn-menu-lin" >Líneas</span></a>
+            <a href="#lineas" onclick="" class="no-child"><i class="fa fa-bus"></i> <span class="lng-btn-menu-lin" >Líneas</span></a>
           </li>    
-          <li class="tab col s3 hide-header  btn-menu-div btn-cercanas">
+          <!-- <li class="tab col s3 hide-header  btn-menu-div btn-cercanas">
             <a href="#cercanas" onclick="redibujarMapa()" class="no-child"><i class="ion-ios-navigate-outline"></i> <span class="lng-btn-menu-cer" >Cercanas</span></a>
-          </li>        
-          <li class="tab col s3 hide-header  btn-menu-div btn-calcula-ruta">
+          </li>         -->
+          <!-- <li class="tab col s3 hide-header  btn-menu-div btn-calcula-ruta">
             <a href="#calcula-ruta" onclick=""class="no-child"><i class="ion-map"></i> <span class="lng-btn-menu-ruta" >Calcula tu ruta</span></a>
           </li>
           <li class="tab col s3 hide-header  btn-menu-div btn-transbordos">
             <a href="#transbordos" onclick=""class="no-child"><i class="ion-ios-shuffle-strong"></i> <span class="lng-btn-menu-transbordo" >Transbordo gratuito</span></a>
-          </li>
+          </li> -->
           <li class="tab col s3 hide-header  btn-menu-div btn-precios">
-            <a href="#tarifas" onclick=""class="no-child"><i class="ion-card"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
+            <a href="#tarifas" onclick=""class="no-child"><i class="fa fa-ticket"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
           </li>   
           <li class="tab col s3 hide-header  btn-menu-div btn-configuracion">
-            <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="ion-gear-a"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
+            <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="fa fa-gear"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
           </li>
 
         </ul>
@@ -134,11 +140,7 @@
         <!-- Hero Header -->
 
         <div id="cabecera-imagen" class="header-index hero-big" style="display:block">
-          <div class="about-itranvias">
-          <!-- <img class="avatar-itranvias" alt="Tranvías de La Coruña" src="http://pbs.twimg.com/profile_images/699868677580136448/0hLiBVTf.png" /> -->
-            <h2 class="white-text m-0">iTranvías</h2>
-            <p class="white-text m-0"><span id="nombre-app">iTranvias</span></p>
-          </div>
+
         </div>
 
         <!-- End Hero Header -->
@@ -150,28 +152,28 @@
           <ul class="tabs tabs_toggle  opcion-menu-index2" style="width: 100%;overflow-x:overlay;overflow-y:hidden">
             <li id="li_codpar" class="tab col s3 hide-header btn-menu-div btn-codpar">
               <a class="" href="#codpar">
-                <div class="icon-menu"><i class="icon-buildings"></i><span class="visuallyhidden">Código</span></div>
+                <div class="icon-menu"><i class="fa fa-search"></i><span class="visuallyhidden">Código</span></div>
                 <div class="nom-menu"><span class="lng-btn-codigo">Código</span></div>
               </a>
             </li>
             <li id="li_favoritos" class="tab col s3 hide-header  btn-menu-div btn-favoritos">
               <a class="" href="#favoritos">
-                <div class="icon-menu"><i class="ion-android-star"></i><span class="visuallyhidden">Favoritos</span></div>
+                <div class="icon-menu"><i class="fa fa-star-o"></i><span class="visuallyhidden">Favoritos</span></div>
                 <div class="nom-menu"><span class="lng-btn-fav">Favoritos</span></div>
               </a>
             </li>
             <li id="li_lineas" class="tab col s3 hide-header btn-menu-div btn-lineas">
               <a class="" href="#lineas">
-                <div class="icon-menu"><i class="ion-ios-loop"></i><span class="visuallyhidden">Líneas</span></div>
+                <div class="icon-menu"><i class="fa fa-bus"></i><span class="visuallyhidden">Líneas</span></div>
                 <div class="nom-menu"><span class="lng-btn-lineas">Líneas</span></div>
               </a>
             </li>
-            <li id="li_cercanas" class="tab col s3 hide-header show-map btn-menu-div btn-cercanas">
+            <!-- <li id="li_cercanas" class="tab col s3 hide-header show-map btn-menu-div btn-cercanas">
               <a  class="active" href="#cercanas" onclick="redibujarMapa()">
                 <div class="icon-menu"><i class="ion-ios-navigate-outline"></i><span class="visuallyhidden">Cercanas</span></div>
                 <div class="nom-menu"><span class="lng-btn-cercanas">Cercanas</span></div>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </div>
@@ -918,7 +920,7 @@
               <div ><span style="font-size:14px !important;" class="origen-linea"></span> - <span style="font-size:14px !important;"class="destino-linea"></span></div>
               <div class="botones">
 
-                <button  style="background:#f44336" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
+                <button  style="background:#3678f4" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
               </div> 
             </div>
           </div>
@@ -929,7 +931,7 @@
               <div class="nombre-parada"></div>
               <div class="botones">
                 <button  style="background:#0089ec" class="btn btn-edit waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-editar">Editar</span><i class="material-icons right"></i></button>
-                <button  style="background:#f44336" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
+                <button  style="background:#3678f4" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
               </div> 
             </div>
           </div>
@@ -946,78 +948,19 @@
     <script src="js/materialize.min.js"></script> 
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/functions.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/Lineas_obj.js"></script>
-    <script src="js/Paradas_obj.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/main.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/Lineas_obj.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/Paradas_obj.js"></script>
     <script src="js/Favoritos_obj.js"></script>
-    <script src="js/Tiempos_obj.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/Tiempos_obj.js"></script>
     <script src="js/MapaItranvias_obj.js"></script>
     <script src="js/Enlaces_obj.js"></script>
-    <script src="js/Mensajes_obj.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/Mensajes_obj.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-ECPf_aPKA4P2zrogh90dSkI1myqV9EU&sensor=true&language=es&callback=inicializaFormRuta&libraries=places"></script>
 
-    <!-- VERSION WEB -->
-
-
     <script src="js/init.js"></script>
-
-  <!-- END VERSION WEB -->
-
-
-  <!-- VERSION CORDOVA -->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript"  src="js/init-cordova.js"></script>
 
-  <!-- END VERSION CORDOVA -->
-
   </body>
 </html>
-
-
-<!--<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-<title>Tranvias</title>
-<link rel="stylesheet" href="css/index.css">
-        <style>
-            /* Hide all the app pages until jQuery Mobile inits to
-               avoid the Flash of Unstyled Content */
-            .splashscreen {
-                width: 100%;
-                height: 100%;
-                border: 0;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index:1001;
-                background: lightgrey;
-                text-shadow: none;
-                color: black;
-            }
-        </style>
-</head>
-<body>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/admob.js"></script>
-        <div id="screen" class="splashscreen" style="display: none"></div>
-		        <script>
-            // Show the splash screen with a loading message
-            // Handler to hide the message when the loading stops
-            window.onload = function () {
-                onLoad();
-                //document.getElementById("screen").style.display = 'none';
-            };
-            document.getElementById("screen").innerHTML = 'Cargando... ';
-            document.getElementById("screen").style.display = 'block';
-        </script>  
-        <div id="fullpage" style="display: none;">
-            <iframe id="embed" src="http://www.itranvias.es" style="height: 100vh; width: 100vw; border: none;" height="240" width="320"></iframe>
-        </div>
-</body>
-</html>-->

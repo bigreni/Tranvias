@@ -98,7 +98,7 @@
             //document.getElementById('main').style.visibility = 'visible';
             //document.getElementById('screen').style.display = 'none';    
         } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
-            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: true });
+            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: false });
             //document.getElementById('main').style.visibility = 'visible';
             //document.getElementById('screen').style.display = 'none';    
         } else
@@ -110,8 +110,8 @@
 
     function showAd()
     {
-        document.getElementById("screen").style.display = 'block'; 
-        if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+        document.getElementById("screen").style.display = 'block';     
+        if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
             AdMob.isInterstitialReady(function(isready){
                 if(isready) 
                     AdMob.showInterstitial();
@@ -125,15 +125,8 @@
     {
 
            askRating();
+          checkPermissions();
            initApp();
-		   ////onDeviceReady();
-            ////New version
-            //document.getElementById('screen').style.display = 'none';
-            //document.getElementById('main').style.visibility = 'visible';
-           ////Old Version 
-           //document.getElementById('fullpage').style.display = 'block';
-           // var iframe = document.getElementById('embed');
-           // iframe.src = iframe.src;
     }
 
    function notFirstUse()
@@ -142,10 +135,32 @@
         document.getElementById('screen').style.display = 'none';
     }
 
+    function checkPermissions(){
+      const idfaPlugin = cordova.plugins.idfa;
+  
+      idfaPlugin.getInfo()
+          .then(info => {
+              if (!info.trackingLimited) {
+                  return info.idfa || info.aaid;
+              } else if (info.trackingPermission === idfaPlugin.TRACKING_PERMISSION_NOT_DETERMINED) {
+                  return idfaPlugin.requestPermission().then(result => {
+                      if (result === idfaPlugin.TRACKING_PERMISSION_AUTHORIZED) {
+                          return idfaPlugin.getInfo().then(info => {
+                              return info.idfa || info.aaid;
+                          });
+                      }
+                  });
+              }
+          });
+  }
+
 function askRating()
 {
-  AppRate.preferences = {
-  openStoreInApp: true,
+  cordova.plugins.AppRate.setPreferences = {
+    reviewType: {
+        ios: 'AppStoreReview',
+        android: 'InAppBrowser'
+        },
   useLanguage:  'es',
   usesUntilPrompt: 10,
   promptAgainForEachNewVersion: false,
