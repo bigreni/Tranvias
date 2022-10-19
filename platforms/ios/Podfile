@@ -2,7 +2,7 @@
 
 platform :ios, '11.0'
 
-target 'Tranvias Coruña' do
-	project 'Tranvias Coruña.xcodeproj'
+target 'Tranvias Coruna' do
+	project 'Tranvias Coruna.xcodeproj'
 
 end

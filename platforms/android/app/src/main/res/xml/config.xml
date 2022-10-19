@@ -25,7 +25,7 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <name>Tranvias Coruña</name>
+    <name>Tranvias Coruna</name>
     <description>
         Coruña Bus App.
     </description>
