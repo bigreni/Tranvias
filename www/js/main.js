@@ -132,10 +132,18 @@ function changeIdioma(idioma){
     setIdiomaPicker(idioma);
     getDataInicial('20160101T000000', idioma)
 
-    getFile(cordova.file.applicationDirectory + "www/idioma.json",function(data){
-    // getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
-      
-      
+    var filePath;
+      if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+          filePath ="file:///android_asset/www/idiomas.json";
+      } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
+          filePath = cordova.file.applicationDirectory + "www/idioma.json"
+      } else
+      {
+        filePath = "https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json"
+      }
+
+    
+    getFile(filePath, function(data){
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]));
       localStorage.setItem("idioma",idioma);
       traduccion = JSON.parse(localStorage.getItem("diccionario"));
@@ -813,8 +821,17 @@ function getDataInicial(fecha_peticion,idioma){
 
     })
 
-    getFile(cordova.file.applicationDirectory + "www/idioma.json",function(data){
-    //getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
+    var filePath;
+    if ((/(android|windows phone)/i.test(navigator.userAgent))) {
+        filePath ="file:///android_asset/www/idiomas.json";
+    } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
+        filePath = cordova.file.applicationDirectory + "www/idioma.json"
+    } else
+    {
+      filePath = "https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json"
+    }
+
+    getFile(filePath, function(data){
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]))
       localStorage.setItem("idioma",idioma);
       traduccion = JSON.parse(localStorage.getItem("diccionario"))
