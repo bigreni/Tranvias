@@ -825,10 +825,10 @@ function getDataInicial(fecha_peticion,idioma){
     if ((/(android|windows phone)/i.test(navigator.userAgent))) {
         filePath ="file:///android_asset/www/idiomas.json";
     } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
-        filePath = cordova.file.applicationDirectory + "www/idioma.json"
+        filePath = window.resolveLocalFileSystemURL(cordova.file.applicationDirectory) + "www/idioma.json";
     } else
     {
-      filePath = "https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json"
+      filePath = "https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json";
     }
 
     getFile(filePath, function(data){
