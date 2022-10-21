@@ -132,7 +132,7 @@ function changeIdioma(idioma){
     setIdiomaPicker(idioma);
     getDataInicial('20160101T000000', idioma)
 
-    getFile("idioma.json",function(data){
+    getFile(cordova.file.applicationDirectory + "www/idioma.json",function(data){
     // getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
       
       
@@ -813,7 +813,8 @@ function getDataInicial(fecha_peticion,idioma){
 
     })
 
-    getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
+    getFile(cordova.file.applicationDirectory + "www/idioma.json",function(data){
+    //getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
       localStorage.setItem("diccionario",JSON.stringify(data[idioma]))
       localStorage.setItem("idioma",idioma);
       traduccion = JSON.parse(localStorage.getItem("diccionario"))

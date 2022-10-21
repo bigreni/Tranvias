@@ -36,6 +36,9 @@
     },
     "cordova-plugin-wkwebview-file-xhr": {
       "PACKAGE_NAME": "com.tranvias.withads"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.tranvias.withads"
     }
   },
   "dependent_plugins": {

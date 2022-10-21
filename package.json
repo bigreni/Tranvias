@@ -18,7 +18,10 @@
       "cordova-admobsdk": {},
       "cordova-plugin-idfa": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-wkwebview-file-xhr": {}
+      "cordova-plugin-wkwebview-file-xhr": {},
+      "cordova-plugin-file": {
+        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
+      }
     },
     "platforms": [
       "ios",
@@ -30,6 +33,7 @@
     "cordova-android": "^10.1.2",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-admobpro": "^8.13.1",
+    "cordova-plugin-file": "^7.0.0",
     "cordova-plugin-idfa": "^2.1.0",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-wkwebview-file-xhr": "^3.1.0",
