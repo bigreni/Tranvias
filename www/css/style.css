@@ -592,16 +592,7 @@ footer.page-footer .footer-copyright {
     width: 100%;
     position: relative;
     overflow: auto;
-    background-color: #3561b4;
 }
-
-.sidenav-lang {
-  width: 100%;
-  position: relative;
-  overflow: auto;
-  background-color: #F44336;
-}
-
 .sidenav-header .nav-avatar {
     display: flex;
     align-items: center;

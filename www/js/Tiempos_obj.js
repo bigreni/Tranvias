@@ -14,9 +14,8 @@ var Tiempos = function(){
 
             $('.tarjetas-tiempo-container').empty();
             data = JSON.parse(data);
-            //console.log(data)
+
             if(data.resultado == "OK"){
-                
                 if (parada_info){
                     $(div_padre).find('.nombre-parada').html('<b>'+codParada+'</b> -'+parada_info.nombre)
                     // $(div_padre +'.nombre-parada').html(parada_info.nombre)
@@ -24,7 +23,6 @@ var Tiempos = function(){
                     if (data.buses.hasOwnProperty('lineas')){
                         $.each(data.buses.lineas,function(key,infolinea){
                             try{
-
 
                                 linea_info = lineas.getLinea(infolinea.linea);
                                 tarjeta_html = $(template).clone(true,true);
@@ -45,8 +43,9 @@ var Tiempos = function(){
                                         tarjeta_html.find('.txt-num-bus').html(infolinea.buses[0].bus);
                                         tarjeta_html.find('.txt-distancia-bus').html(formatNumber.new(infolinea.buses[0].distancia)+' mts');
                                         var ultima_parada = paradas.getParada(infolinea.buses[0].ult_parada)
+
                                         tarjeta_html.find('.txt-parada-bus').html(ultima_parada.nombre);
-                                        tarjeta_html.find('.txt-tiempo').html(infolinea.buses[0].tiempo+'"');
+                                        tarjeta_html.find('.txt-tiempo').html(infolinea.buses[0].tiempo+"'");
                                     }
                                 }
                                 for (var i = 1; i <= infolinea.buses.length-1; i++) {
@@ -59,7 +58,7 @@ var Tiempos = function(){
                                     ultima_parada = paradas.getParada(bus.ult_parada)
                                     proximos_html.find('.prox-txt-parada-bus').html(ultima_parada.nombre);
 
-                                    proximos_html.find('.prox-txt-tiempo').html(bus.tiempo+'"');
+                                    proximos_html.find('.prox-txt-tiempo').html(bus.tiempo+"'");
                                     proximos_html.css('display','block');
                                     proximos_html.appendTo(tarjeta_html.find('#lista-proximos-buses'));
                                 }
@@ -112,7 +111,6 @@ var Tiempos = function(){
 
                 console.log(codParada +' '+existe)
                 if(existe == false){
-                    console.log('A')
                     //El favorito no existe.
                     //Crear opción de añadir a favoritos
                     lineaHtml = $('.remove-fav-parada')
@@ -125,6 +123,7 @@ var Tiempos = function(){
                         closeCollapsible('#ida')
                         closeCollapsible('#tab-result')
                         closeCollapsible('#resultado')
+                         trackerEventAnalytics('Click en Submenú', 'Añadir línea a favoritos');
                         console.log(codParada)
                         //$('.cabecera-direccion').click()
                         favorito_obj.setFavorito(0,parada_info);
@@ -147,7 +146,7 @@ var Tiempos = function(){
                         closeCollapsible('#ida')
                         closeCollapsible('#tab-result')
                         closeCollapsible('#resultado')
-                        console.log(codParada)
+                        trackerEventAnalytics('Click en Submenú', 'Eliminar línea a favoritos');
                         //$('.cabecera-direccion').click()
                         //favorito_obj.setFavorito(1,lineaObj);
                         
@@ -167,6 +166,8 @@ var Tiempos = function(){
             $('.add-fav-parada').off();
             $('.add-fav-parada').on('click',function(){
 
+                trackerEventAnalytics('Click en Submenú', 'Añadir parada a favoritos');
+
                 closeCollapsible('#resultado')                            
                 $('.cabecera-parada').click()
                 favorito_obj.setFavorito(0,parada_info);
@@ -175,6 +176,7 @@ var Tiempos = function(){
       
             $('.ver-mapa-parada').off();
             $('.ver-mapa-parada').on('click',function(){
+                trackerEventAnalytics('Click en Submenú', 'Consultar mapa de parada');
 
                 closeCollapsible('#resultado')
                 $('#modal-mapa-parada').find('.nombre-parada').html(parada_info.nombre).css('color','black')

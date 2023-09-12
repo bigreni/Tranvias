@@ -1,15 +1,4 @@
 {
-  "cordova-plugin-admobpro": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-admobpro"
-    },
-    "is_top_level": true,
-    "variables": {
-      "ADMOB_ANDROID_APP_ID": "ca-app-pub-1855415514372943~9063671314",
-      "PLAY_SERVICES_VERSION": "20.4.0"
-    }
-  },
   "cordova-plugin-extension": {
     "source": {
       "type": "registry",
@@ -62,14 +51,6 @@
       "GPS_REQUIRED": "true"
     }
   },
-  "cordova-admobsdk": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-admobsdk"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-idfa": {
     "source": {
       "type": "registry",
@@ -104,12 +85,16 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-file": {
+  "admob-plus-cordova": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-file@7.0.0"
+      "id": "admob-plus-cordova"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "PLAY_SERVICES_VERSION": "20.5.0",
+      "APP_ID_ANDROID": "ca-app-pub-9249695405712287~6977743955",
+      "APP_ID_IOS": "ca-app-pub-9249695405712287~8121558759"
+    }
   }
 }

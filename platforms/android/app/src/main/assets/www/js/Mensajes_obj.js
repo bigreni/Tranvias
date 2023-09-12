@@ -6,6 +6,8 @@ var Mensajes = function(){
 	this.nuevoMensaje = function(){
 		Mensaje = this;
 		$('#novedades').empty();
+    	$('#novedades').html('<span style="font-size: 0.7em;text-align: center;black: red;">'+$('#version').html()+'</span>');
+
 		try{
 
 
