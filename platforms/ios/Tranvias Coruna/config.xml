@@ -25,6 +25,9 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="AdMob">
+        <param name="ios-package" value="AMBPlugin" />
+    </feature>
     <feature name="Notification">
         <param name="ios-package" value="CDVNotification" />
     </feature>
@@ -59,10 +62,8 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
-    <cdv:plugin name="cordova-plugin-admobpro" source="npm">
-    </cdv:plugin>
+    <cdv:plugin name="admob-plus-cordova" source="npm" />
     <cdv:plugin name="cordova-plugin-wkwebview-file-xhr" source="npm" />
-    <cdv:plugin name="cordova-plugin-statusbar" source="npm" />
     <cdv:plugin name="cordova-plugin-device" source="npm" />
     <cdv:plugin name="cordova-plugin-geolocation" source="npm" />
     <cdv:plugin name="cordova-plugin-dialogs" source="npm" />
@@ -84,9 +85,9 @@
         <string>Need location access to find things nearby</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSUserTrackingUsageDescription">
-        <string>Used to remember and personalize your experience</string>
+        <string>Your data will be used to show you personalized ads.</string>
     </edit-config>
-    <preference default="ca-app-pub-9249695405712287~8121558759" name="ADMOB_IOS_APP_ID" />
+    <preference default="ca-app-pub-9249695405712287~4315421551" name="ADMOB_IOS_APP_ID" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <icon height="57" src="res/icon/ios/Icon57.png" width="57" />
@@ -101,18 +102,12 @@
     <icon height="100" src="res/icon/ios/Icon100.png" width="100" />
     <icon height="167" src="res/icon/ios/Icon167.png" width="167" />
     <preference name="AllowInlineMediaPlayback" value="false" />
-    <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="EnableViewportScale" value="false" />
-    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="MediaTypesRequiringUserActionForPlayback" value="none" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="SuppressesLongPressGesture" value="false" />
     <preference name="Suppresses3DTouchGesture" value="false" />
-    <preference name="GapBetweenPages" value="0" />
-    <preference name="PageLength" value="0" />
-    <preference name="PaginationBreakingMode" value="page" />
-    <preference name="PaginationMode" value="unpaginated" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
@@ -124,16 +119,14 @@
     <preference name="ios-statusbarstyle" value="black" />
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
-    <preference name="SplashScreenDelay" value="0" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="SplashScreenDelay" value="1" />
+    <preference name="AutoHideSplashScreen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="24" />
-    <preference name="android-targetSdkVersion" value="30" />
+    <preference name="android-minSdkVersion" value="26" />
+    <preference name="android-targetSdkVersion" value="33" />
     <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="AndroidInsecureFileModeEnabled" value="true" />
     <preference name="InterceptRemoteRequests" value="all" />
-    <feature name="AdMob">
-        <param name="ios-package" value="AMBPlugin" />
-    </feature>
+    <preference name="SwiftVersion" value="5.3" />
 </widget>

@@ -131,6 +131,8 @@ function changeIdioma(idioma){
     localStorage.setItem('idultimomensaje','0')
     setIdiomaPicker(idioma);
     getDataInicial('20160101T000000', idioma)
+    trackerEventAnalytics('Click en Idioma', 'Idioma: '+idioma);
+
 
     getFile("https://s3.us-east-2.amazonaws.com/bigreni.com/idioma.json",function(data){
       
@@ -416,8 +418,38 @@ function inicializar(){
     
   })
 
-  
+  $('.btn-codpar').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón búsqueda por código');
+  });
+
+  $('.btn-cercanas').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón paradas cercanas');
+  });
+  $('.btn-lineas').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón consulta líneas');
+  });
+
+  $('.btn-configuracion').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón configuracion');
+  });
+  $('.btn-calcula-ruta').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón calcula ruta');
+  });
+    $('.btn-transbordos').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón transbordos');
+  });
+  $('.btn-precios').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón consulta precios');
+  });
+    $('.btn-novedades').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón Novedades');
+  });
+  $('#open-left').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Abrir menú desplegable');
+  });
+
   $('.btn-favoritos').on('click',function(){
+    //trackerEventAnalytics('Click en menú', 'Botón favoritos');
     $('#a-tab-fav-todos').click()   
     $('#li-tab-fav-todos').addClass('active') 
     $('#a-tab-fav-todos').addClass('active') 
@@ -429,34 +461,24 @@ function inicializar(){
   })  
 
   $('#codpar').submit(function(event){
+    //trackerAnalytics('Ventana Resultado')
+    //trackerEventAnalytics('Click','Búsqueda directa por código') 
     try{
 
       event.preventDefault();
       if(resultado_parada.refrescoResultado){
           clearTimeout(resultado_parada.refrescoResultado)
       }
-	  var paradaId =  parseInt($('#search').val(),10);
-      var parada = paradas.getParada(paradaId);
+      var parada = paradas.getParada(parseInt($('#search').val(),10))
       $('.menu-div').hide();
-      showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+ paradaId);
+      showLoading(traducir("lng-msg-cargando-parada","Cargando info parada")+parseInt($('#search').val(),10));
 
       resultado_parada.ajaxResultado(parada,'#resultado', '#template-tarjeta-tiempo' , '.tarjetas-tiempo-container',function(obj){
         $('#content-message').hide();
         $('#resultado').show();
         $('#content-info').show()
 
-      })
-	  
-	  if(isNaN(paradaId))
-	  {
-		  paradaId = parseInt($('#search').val(),10);
-		        resultado_parada.ajaxResultado(parada,'#resultado', '#template-tarjeta-tiempo' , '.tarjetas-tiempo-container',function(obj){
-        $('#content-message').hide();
-        $('#resultado').show();
-        $('#content-info').show()
-      })
-	  }
-	  
+      }) 
       
       if(parada != false){
         addUltimasParadas(parada)  
@@ -538,6 +560,8 @@ function getLastParadas(ultimasParadas, addToDiv, template){
           event.preventDefault();
           $('#search').val(paradaReciente.idParada);
           $('#codpar').submit();
+
+          //trackerEventAnalytics('Click', 'Consulta por paradas recientes')
 
         })
         lista_paradas.appendTo(addToDiv);
@@ -674,8 +698,7 @@ function getDataInicial(fecha_peticion,idioma){
 
 
     peticion.done(function(data) {
-
-      datos = JSON.parse(data)
+      datos = JSON.parse(data);
       if(datos.hasOwnProperty('iTranvias') && datos.iTranvias.hasOwnProperty('actualizacion')){
         console.log('Hay una versión nueva de los datos')
         localStorage.setItem('fecha_peticion',datos.fecha_peticion);
@@ -775,7 +798,19 @@ function getDataInicial(fecha_peticion,idioma){
       }catch(e){
         console.log(e)
       }
-      if(mostrar_novedades){$('.btn-novedades a').click()}
+
+      if ( window.location !== window.parent.location )
+      {
+        return true;
+        // The page is in an iFrames
+      }
+      else {
+
+        if(mostrar_novedades){$('.btn-novedades a').click()}
+        // The page is not in an iFrame
+     }
+	    
+
 
     })
 
@@ -801,7 +836,7 @@ function getDataInicial(fecha_peticion,idioma){
 
       }catch(e){
         console.log(e)
-        showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error"),'fa fa-bug','#lineas-container')
+        showMessage(traducir("lng-toast-error-carga-lineas","No se han podido cargar líneas. Error 400"),'fa fa-bug','#lineas-container')
 
       }
 
@@ -827,7 +862,7 @@ function getDataInicial(fecha_peticion,idioma){
     })    
     return true;
   }catch(err){
-    alert(err);
+    
     Materialize.toast(traducir("lng-toast-error-datos-ini","Petición datos iniciales"),5000)
 
     return false;
@@ -859,14 +894,15 @@ function getFile(url,callback){
   });
 }
 function getQuery(funcion,parametro){
+
     var datos;
     var state;
     var time = getHora();
     var server1 = $.ajax({
         type: "GET",
         url: "https://www.itranvias.com/queryitr_v3.php?",
-		datatype: "json",
-        timeout: '5000',
+        //dataType: "json",
+        timeout: '15000',
         cache: false,
         data: "dato="+parametro+"&func="+funcion,
 

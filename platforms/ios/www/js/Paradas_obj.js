@@ -28,12 +28,12 @@ var Paradas = function(){
 
 	}
 	this.getParadas = function(){
+
 		this.objetoParadas = JSON.parse(localStorage.getItem("paradas"));	
 		
 	}
 
 	this.getParada = function(cod_parada){
-
 		paradasObj = this.objetoParadas;
 		if(paradasObj === null || paradasObj[cod_parada] == undefined){
 			console.log('No existe parada con el código: '+cod_parada)
@@ -91,12 +91,13 @@ var Paradas = function(){
 		  		if(resultado_parada.refrescoResultado){
 		      		clearTimeout(resultado_parada.refrescoResultado)
 		  		}	
+				trackerAnalytics('Ventana Resultado')
 				var codigo_parada = $(this).data('codparada')
 				var parada = paradas.getParada(codigo_parada)
 				$('.menu-div').hide();
 				
 				$('#paradas').show();
-		      	showLoading('Cargando info parada '+parada.idParada);
+		      	showLoading(traducir("lng-msg-cargando-parada","Cargando info parada ")+ parada.idParada);
 				resultado_parada.ajaxResultado(parada,'#tab-result','#template-tarjeta-tiempo','.tarjetas-tiempo-container',function(obj){
 					$('#tab-result').show();
 		        	$('#content-message').hide()
@@ -178,7 +179,7 @@ var Paradas = function(){
 
 			existe = favorito_obj.existeFavorito(1, lineaObj.idlinea);
 
-			console.log(lineaObj.idlinea +' '+existe)
+			//console.log(lineaObj.idlinea +' '+existe)
 			if(existe == false){
 				//El favorito no existe.
 				//Crear opción de añadir a favoritos
@@ -192,7 +193,8 @@ var Paradas = function(){
 					closeCollapsible('#ida')
 					closeCollapsible('#tab-result')
 					closeCollapsible('#resultado')
-					console.log(lineaObj)
+		             trackerEventAnalytics('Click en Submenú', 'Añadir línea a favoritos');
+					//console.log(lineaObj)
 					//$('.cabecera-direccion').click()
 					favorito_obj.setFavorito(1,lineaObj);
 					lineaHtml = $('.add-fav-linea')
@@ -213,7 +215,8 @@ var Paradas = function(){
 					closeCollapsible('#ida')
 					closeCollapsible('#tab-result')
 					closeCollapsible('#resultado')
-					console.log(lineaObj)
+		            trackerEventAnalytics('Click en Submenú', 'Eliminar línea a favoritos');
+					//console.log(lineaObj)
 					//$('.cabecera-direccion').click()
 					//favorito_obj.setFavorito(1,lineaObj);
 					
@@ -234,6 +237,7 @@ var Paradas = function(){
 			closeCollapsible('#tab-result')			
 			$('#modal-mapa-linea').find('.nombre-linea').html(lineaObj.lin_comer+' - '+lineaObj.nombre_dest+' - '+lineaObj.nombre_orig).css('color','#'+lineaObj.color)
 			$('#modal-mapa-linea').openModal();
+            trackerEventAnalytics('Click en Submenú', 'Consultar mapa de línea');
 
 			var options = {
         zoom: 10,
@@ -252,6 +256,7 @@ var Paradas = function(){
 		})
 
 		$('.ver-horarios-linea').off().on('click', function(){
+			trackerEventAnalytics('Click en Submenú', 'Consultar horarios línea');
 
 			closeCollapsible('#vuelta')
 			closeCollapsible('#ida')
@@ -319,9 +324,7 @@ var Paradas = function(){
 			
 
 			paradasObj.paradasAjax.fail(function(data){
-				console.log('PPPPPPPPPP')
 				console.log(data)
-				console.log('PPPPPPPPPP')
 				texto = traducir("lng-msg-ult-actualiza", "Última actualización")
 				$('.actualiza-buses > .ultima-actualizacion').html(texto+' '+getHora())				
 				if(data.status != "0"){
@@ -389,8 +392,7 @@ var Paradas = function(){
 				console.log('No existen buses en una de las direcciones')
 			}
 
-			//TODO Controlar que no sea undefined tanto buses_ida como buses_vue. 
-			//En caso de serle, mostrar aviso de ERROR.
+
 
 
 
@@ -490,51 +492,6 @@ var Paradas = function(){
 			}
 	}
 
-/*
 
-https://developers.google.com/maps/documentation/javascript/examples/directions-panel
-
-
-
-
-
-El siguiente ejemplo es idéntico al que se muestra antes, pero en él se incluye un panel <div> en el que deben mostrarse las indicaciones:
-
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
-
-function initialize() {
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-  var mapOptions = {
-    zoom:7,
-    center: chicago
-  }
-  map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-}
-
-function calcRoute() {
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
-  var request = {
-    origin:start,
-    destination:end,
-    travelMode: google.maps.TravelMode.DRIVING
-  };
-  directionsService.route(request, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    }
-  });
-}
-En el cuerpo HTML:
-
-<div id="map" style="float:left;width:70%; height:100%"></div>
-<div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
-
-*/
 
 }

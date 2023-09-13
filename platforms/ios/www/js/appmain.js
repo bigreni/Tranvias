@@ -123,10 +123,9 @@
 
    function checkFirstUse()
     {
-
-           askRating();
-          checkPermissions();
-           initApp();
+      initApp();
+      checkPermissions();
+      askRating();
     }
 
    function notFirstUse()

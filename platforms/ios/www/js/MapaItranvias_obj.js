@@ -118,6 +118,7 @@ var MapaItranvias = function(){
 		      	$(addToDiv).empty();
 		      	if(cercanas.posgps.length > 0){
 			      	paradas_cercanas.getParadas();
+
 				    $.each(cercanas.posgps,function(key,value){
 				        parada = paradas_cercanas.getParada(value.parada);
 				        var coords = new google.maps.LatLng(Math.abs(parada.posy), parada.posx);
@@ -145,8 +146,7 @@ var MapaItranvias = function(){
 				              $('#content-message').hide();
 				              $('#resultado').show();
 				              $('#content-info').show()
-				              console.log('EHHHHHHHH')
-				            })        
+				            })
 				            addUltimasParadas(parada)
 						});	        
 				        tarjeta_parada_cercana.appendTo(addToDiv)
@@ -248,10 +248,9 @@ var MapaItranvias = function(){
 	this.dibujaBusesMapa = function(busesArray,icono){
 		MapaItranviasObj = this;
 		MapaItranviasObj.busesPath = []
-		console.log(busesArray)
 		$.each(busesArray,function(key,sentido){
 			$.each(sentido.buses, function(key,bus){
-				console.log(bus)
+				//console.log(bus)
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(parseFloat(bus.posy), parseFloat(bus.posx)),
 					map: MapaItranviasObj.mapa,
@@ -331,7 +330,7 @@ var MapaItranvias = function(){
 	}
 
  	this.dibujaRecorridosMapa = function(lineaObj, recorridosArray){
- 		console.log(recorridosArray)
+ 		//console.log(recorridosArray)
 
 		$.each(recorridosArray, function(ruta,recorrido){
 			var opacidadLinea =  1-((ruta*3)/10)
@@ -418,7 +417,7 @@ var MapaItranvias = function(){
 					recorridoObj.posGps 	= posGpsArray;
 					recorridosArray.push(recorridoObj)
 				})
-				console.log(recorridosArray)
+				//console.log(recorridosArray)
 				MapaItranviasObj.dibujaRecorridosMapa(lineaObj,recorridosArray);
 				MapaItranviasObj.dibujaParadasMapa(paradasArray,'img/icons/bus-stop.png');
 //				MapaItranviasObj.dibujaBusesMapa(busesArray, 'https://web.moovitapp.com/images/stations/mdpi/bus.png');
