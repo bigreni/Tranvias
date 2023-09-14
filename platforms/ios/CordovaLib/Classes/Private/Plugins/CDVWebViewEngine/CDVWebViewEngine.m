@@ -19,9 +19,9 @@
 
 #import "CDVWebViewEngine.h"
 #import "CDVWebViewUIDelegate.h"
-#import <Cordova/CDVWebViewProcessPoolFactory.h>
+#import "CDVWebViewProcessPoolFactory.h"
 #import <Cordova/NSDictionary+CordovaPreferences.h>
-#import <Cordova/CDVURLSchemeHandler.h>
+#import "CDVURLSchemeHandler.h"
 
 #import <objc/message.h>
 
@@ -45,7 +45,6 @@
 @property (nonatomic, strong) CDVURLSchemeHandler * schemeHandler;
 @property (nonatomic, readwrite) NSString *CDV_ASSETS_URL;
 @property (nonatomic, readwrite) Boolean cdvIsFileScheme;
-@property (nullable, nonatomic, strong, readwrite) WKWebViewConfiguration *configuration;
 
 @end
 
@@ -56,36 +55,24 @@
 
 @synthesize engineWebView = _engineWebView;
 
-- (nullable instancetype)initWithFrame:(CGRect)frame configuration:(nullable WKWebViewConfiguration *)configuration
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super init];
     if (self) {
         if (NSClassFromString(@"WKWebView") == nil) {
             return nil;
         }
-        
-        self.configuration = configuration;
-        self.engineWebView = configuration ? [[WKWebView alloc] initWithFrame:frame configuration:configuration] : [[WKWebView alloc] initWithFrame:frame];
+
+        self.engineWebView = [[WKWebView alloc] initWithFrame:frame];
     }
 
     return self;
 }
 
-- (nullable instancetype)initWithFrame:(CGRect)frame
-{
-    return [self initWithFrame:frame configuration:nil];
-}
-
 - (WKWebViewConfiguration*) createConfigurationFromSettings:(NSDictionary*)settings
 {
-    WKWebViewConfiguration* configuration;
-    if (_configuration) {
-        configuration = _configuration;
-    } else {
-        configuration = [[WKWebViewConfiguration alloc] init];
-        configuration.processPool = [[CDVWebViewProcessPoolFactory sharedFactory] sharedProcessPool];
-    }
-    
+    WKWebViewConfiguration* configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.processPool = [[CDVWebViewProcessPoolFactory sharedFactory] sharedProcessPool];
     if (settings == nil) {
         return configuration;
     }
@@ -157,12 +144,6 @@
         }
         
     }
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
-    if (@available(iOS 14.0, *)) {
-        configuration.limitsNavigationsToAppBoundDomains = [settings cordovaBoolSettingForKey:@"LimitsNavigationsToAppBoundDomains" defaultValue:NO];
-    }
-#endif
 
     return configuration;
 }
