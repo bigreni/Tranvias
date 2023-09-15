@@ -88,7 +88,7 @@
   "admob-plus-cordova": {
     "source": {
       "type": "registry",
-      "id": "admob-plus-cordova"
+      "id": "admob-plus-cordova@1.28.0"
     },
     "is_top_level": true,
     "variables": {

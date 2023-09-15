@@ -112,6 +112,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-idfa": "2.1.0",
     "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-wkwebview-file-xhr": "3.1.0",
-    "admob-plus-cordova": "2.0.0-alpha.13"
+    "admob-plus-cordova": "1.28.0"
   };
 });

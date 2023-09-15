@@ -3,7 +3,15 @@ import GoogleMobileAds
 
 class AMBAppOpenAd: AMBAdBase, GADFullScreenContentDelegate {
 
+    let orientation: UIInterfaceOrientation
+
     var mAd: GADAppOpenAd?
+
+    init(id: Int, adUnitId: String, adRequest: GADRequest, orientation: UIInterfaceOrientation) {
+        self.orientation = orientation
+
+        super.init(id: id, adUnitId: adUnitId, adRequest: adRequest)
+    }
 
     convenience init?(_ ctx: AMBContext) {
         guard let id = ctx.optId(),
@@ -11,9 +19,14 @@ class AMBAppOpenAd: AMBAdBase, GADFullScreenContentDelegate {
         else {
             return nil
         }
+        var orientation = UIInterfaceOrientation.portrait
+        if let v = ctx.opts?.value(forKey: "orientation") as? Int {
+            orientation = UIInterfaceOrientation(rawValue: v)!
+        }
         self.init(id: id,
                   adUnitId: adUnitId,
-                  adRequest: ctx.optGADRequest())
+                  adRequest: ctx.optGADRequest(),
+                  orientation: orientation)
     }
 
     deinit {
@@ -30,6 +43,7 @@ class AMBAppOpenAd: AMBAdBase, GADFullScreenContentDelegate {
         GADAppOpenAd.load(
             withAdUnitID: self.adUnitId,
             request: adRequest,
+            orientation: self.orientation,
             completionHandler: { (ad, error) in
                 if error != nil {
                     self.emit(AMBEvents.adLoadFail, error!)
@@ -57,7 +71,7 @@ class AMBAppOpenAd: AMBAdBase, GADFullScreenContentDelegate {
         self.emit(AMBEvents.adShowFail, error)
     }
 
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         self.emit(AMBEvents.adShow)
     }
 

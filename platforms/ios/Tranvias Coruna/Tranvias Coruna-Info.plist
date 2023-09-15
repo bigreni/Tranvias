@@ -46,19 +46,23 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
+		<key>NSAllowsArbitraryLoadsForMedia</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
 	</dict>
 	<key>UIInterfaceOrientation</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Your data will be used to show you personalized ads.</string>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need location access to find things nearby</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-9249695405712287~8121558759</string>
 	<key>GADDelayAppMeasurementInit</key>
 	<true/>
-	<key>GADIntegrationManager</key>
-	<string>webview</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -68,10 +72,6 @@
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
 			<string>4fzdc2evr5.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>4pfyvq9l8r.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -92,14 +92,6 @@
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
 			<string>v72qych5uu.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>ludvb6z3bs.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>cp8zw746q7.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -155,23 +147,7 @@
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
-			<string>y5ghdn5j9k.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
 			<string>n6fk4nfna4.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>v9wttpbfk9.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>n38lu8286q.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>47vhws6wlr.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -180,14 +156,6 @@
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
 			<string>9t245vhmpl.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>a2p9lx4jpn.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>22mmun2rn5.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -219,15 +187,7 @@
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
-			<string>ecpz2srf59.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
 			<string>uw77j35x4d.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>mlmmfzh3r3.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -236,10 +196,6 @@
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
 			<string>4dzt52r2t5.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>gta9lk7p23.skadnetwork</string>
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
@@ -255,14 +211,8 @@
 		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
-			<string>3rd42ekr43.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Need location access to find things nearby</string>
 </dict>
 </plist>

@@ -2,7 +2,8 @@
 source 'https://cdn.cocoapods.org/'
 platform :ios, '11.0'
 use_frameworks!
-target 'Tranvias Coruna' do
-	project 'Tranvias Coruna.xcodeproj'
-	pod 'Google-Mobile-Ads-SDK', '~> 10.6.0'
+use_frameworks!
+target 'C:\Users\naiar\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruna' do
+	project 'C:\Users\naiar\Documents\GitHub\Tranvias\platforms\ios\Tranvias Coruna.xcodeproj'
+	pod 'Google-Mobile-Ads-SDK', '~> 8.13.0'
 end

@@ -39,7 +39,7 @@
     "cordova-support-android-plugin": "~2.0.4"
   },
   "dependencies": {
-    "admob-plus-cordova": "2.0.0-alpha.13",
+    "admob-plus-cordova": "1.28.0",
     "cordova": "^12.0.0"
   }
 }

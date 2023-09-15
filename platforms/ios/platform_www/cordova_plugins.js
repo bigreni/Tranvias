@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "admob-plus-cordova.AdMob",
-      "file": "plugins/admob-plus-cordova/www/admob.js",
-      "pluginId": "admob-plus-cordova",
-      "clobbers": [
-        "admob"
-      ]
-    },
-    {
       "id": "cordova-plugin-dialogs.notification",
       "file": "plugins/cordova-plugin-dialogs/www/notification.js",
       "pluginId": "cordova-plugin-dialogs",
@@ -134,10 +126,17 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-wkwebview-file-xhr/src/www/ios/whatwg-fetch-2.0.3.js",
       "pluginId": "cordova-plugin-wkwebview-file-xhr",
       "runs": true
+    },
+    {
+      "id": "admob-plus-cordova.AdMob",
+      "file": "plugins/admob-plus-cordova/www/admob.js",
+      "pluginId": "admob-plus-cordova",
+      "clobbers": [
+        "admob"
+      ]
     }
   ];
   module.exports.metadata = {
-    "admob-plus-cordova": "2.0.0-alpha.13",
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-nativestorage": "2.3.2",
     "cordova-plugin-apprate": "1.7.2",
@@ -146,6 +145,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-idfa": "2.1.0",
     "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-wkwebview-file-xhr": "3.1.0",
-    "cordova-support-android-plugin": "2.0.4"
+    "cordova-support-android-plugin": "2.0.4",
+    "admob-plus-cordova": "1.28.0"
   };
 });
