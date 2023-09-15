@@ -252,6 +252,7 @@
 		15AE47EA3A2CE9596DD6401A291F92D5 /* GULLoggerCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerCodes.h; path = GoogleUtilities/Common/GULLoggerCodes.h; sourceTree = "<group>"; };
 		175122FFEA3AEE194392BE45218CF857 /* FBLPromise+Delay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Delay.h"; path = "Sources/FBLPromises/include/FBLPromise+Delay.h"; sourceTree = "<group>"; };
 		178BDFEE24877396D84030CE8900710D /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
+		1A2DDA9B66B058C39DE10BFE27C3F1F2 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMobileAds.xcframework; path = "Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		1E46AE4135907FAC9E85DF9ABA420C23 /* GULHeartbeatDateStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULHeartbeatDateStorage.h; path = GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h; sourceTree = "<group>"; };
 		1F044934ADEA086167A0B3D4F9C5E74B /* GULOriginalIMPConvenienceMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULOriginalIMPConvenienceMacros.h; path = GoogleUtilities/MethodSwizzler/Public/GoogleUtilities/GULOriginalIMPConvenienceMacros.h; sourceTree = "<group>"; };
 		2191C6C3D56657EF58C620C27FA956CF /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
@@ -271,7 +272,6 @@
 		3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromisesObjC; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		363C2F46CD606A560C9FF90556435019 /* GULSceneDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSceneDelegateSwizzler.m; path = GoogleUtilities/AppDelegateSwizzler/GULSceneDelegateSwizzler.m; sourceTree = "<group>"; };
 		3662271F74597CD9E1B2E358517174E3 /* Pods-Tranvias Coruna-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tranvias Coruna-Info.plist"; sourceTree = "<group>"; };
-		383B62905FE1B01AC0BEFAB493C4CF9B /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GoogleMobileAds.xcframework; path = Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		3A03F8F8FB424246186FA6B5823A96EB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		3ADA85A154AAA45D48B3073610042559 /* Pods-Tranvias Coruna-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tranvias Coruna-acknowledgements.markdown"; sourceTree = "<group>"; };
 		3F50D5E6FD54CD4612CD694D60B5C738 /* FBLPromise+Async.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Async.m"; path = "Sources/FBLPromises/FBLPromise+Async.m"; sourceTree = "<group>"; };
@@ -545,7 +545,7 @@
 		56616740C30EFABA2C216DE97E4C4DC1 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E86D830F2330B744D8EA3E955483DE42 /* Frameworks */,
+				87ECC199CE9A8F1A30CEB2052BCCBF71 /* Frameworks */,
 				06753E1B695935FDB13ACCDBF434EA46 /* Support Files */,
 			);
 			name = "Google-Mobile-Ads-SDK";
@@ -601,6 +601,14 @@
 				4941A417B9D1A1629FDA3B3A6D186B0A /* NSURLSession+GULPromises.m */,
 			);
 			name = Environment;
+			sourceTree = "<group>";
+		};
+		87ECC199CE9A8F1A30CEB2052BCCBF71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A2DDA9B66B058C39DE10BFE27C3F1F2 /* GoogleMobileAds.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8DD9C8FAB1E1236864368235D697EAAB /* Frameworks */ = {
@@ -772,14 +780,6 @@
 			children = (
 			);
 			name = decode;
-			sourceTree = "<group>";
-		};
-		E86D830F2330B744D8EA3E955483DE42 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				383B62905FE1B01AC0BEFAB493C4CF9B /* GoogleMobileAds.xcframework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EB4B7ABCDACB43250483ED0FD3663041 /* nanopb */ = {
@@ -1290,6 +1290,23 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		06897698908CE215AF59208EDD9EE589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D14AA4ADDCD1B63F483D9296F5C2F3E5 /* GoogleAppMeasurement.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0786285C011CE91E7A29CEC9819E3268 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AA5BC64B4DEDC62442F180A5DA093605 /* Pods-Tranvias Coruna.debug.xcconfig */;
@@ -1465,50 +1482,13 @@
 			};
 			name = Release;
 		};
-		3EB5D23E87011BBF57A0C944031F130F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D14AA4ADDCD1B63F483D9296F5C2F3E5 /* GoogleAppMeasurement.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5AD20297F07705BF8FD76B9D30720EDB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BCC8B69B9C138715D8DAE41C500698E /* Google-Mobile-Ads-SDK.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		78E25280248CDF7ADEB8869CA498633D /* Debug */ = {
+		31E2647CBD7BAEC5EA59596938E06F8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24930DBF477C07994BD441038FD33C00 /* Google-Mobile-Ads-SDK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1517,6 +1497,23 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		36B9BE013738F4455240139576025344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BCC8B69B9C138715D8DAE41C500698E /* Google-Mobile-Ads-SDK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 		7AB3A5C302D66F0F33D2885BD9049A38 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1715,6 +1712,22 @@
 			};
 			name = Debug;
 		};
+		BF68D6CF684321514BF519C4A1836F72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF8A0EA265E90DEF4583A0BA997688DD /* GoogleAppMeasurement.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		D6DF616F1815B7C3BEB71E354C3EB006 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A75FD7D7D71932DDF54EEFC39B74F0FE /* GoogleUtilities.debug.xcconfig */;
@@ -1782,31 +1795,14 @@
 			};
 			name = Debug;
 		};
-		FCEFD8638BCE7C92E7253827D845D840 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF8A0EA265E90DEF4583A0BA997688DD /* GoogleAppMeasurement.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		0324DE6E522EE88177546EA0238F870E /* Build configuration list for PBXAggregateTarget "Google-Mobile-Ads-SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				78E25280248CDF7ADEB8869CA498633D /* Debug */,
-				5AD20297F07705BF8FD76B9D30720EDB /* Release */,
+				31E2647CBD7BAEC5EA59596938E06F8E /* Debug */,
+				36B9BE013738F4455240139576025344 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1850,8 +1846,8 @@
 		5517674D2C07039F9AF37BC5EBEFB0AE /* Build configuration list for PBXAggregateTarget "GoogleAppMeasurement" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FCEFD8638BCE7C92E7253827D845D840 /* Debug */,
-				3EB5D23E87011BBF57A0C944031F130F /* Release */,
+				BF68D6CF684321514BF519C4A1836F72 /* Debug */,
+				06897698908CE215AF59208EDD9EE589 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
