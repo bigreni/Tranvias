@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<html lang="es-ES">
+
+  <head>
+    <title>Tranvías Coruna</title>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="x-ua-compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+
+    <!-- Fonts -->
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+    <!-- Icons -->
+
+
+    <!-- Styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="css/itranvias-icons-style.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript">
+      var cachebuster = Math.round(new Date().getTime() / 1000);
+      // document.write('<link rel="stylesheet" type="text/css" href="css/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+      document.write('<link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css?cb=' +cachebuster+'"></li' + 'nk>');
+  </script>
+    <!-- <link href="https://s3.us-east-2.amazonaws.com/bigreni.com/css/coruna/style.css" rel="stylesheet">     -->
+    <!-- <link href="/css/style.css" rel="stylesheet">     -->
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+        <style>
+            /* Hide all the app pages until jQuery Mobile inits to
+               avoid the Flash of Unstyled Content */
+            .splashscreen {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index:1001;
+                background: url(https://s3.us-east-2.amazonaws.com/bigreni.com/img/status.gif) no-repeat center center;
+                text-shadow: none;
+                color: black;
+            }
+        </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/appmain_alt.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/appmain.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/appmain_alt.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+    </script>
+        <div id="screen" class="splashscreen" style="display: none"></div>
+		        <script>
+            // Show the splash screen with a loading message
+            // Handler to hide the message when the loading stops
+            window.onload = function () {
+                onLoad();
+                //document.getElementById("screen").style.display = 'none';
+            };
+            //document.getElementById("screen").innerHTML = 'Cargando... ';
+            document.getElementById("screen").style.display = 'block';
+        </script>  
+  <div id="main" style="display:none; visibility:hidden;"> <!-- Main Container -->
+
+      <!-- Sidebar -->
+      
+      <ul id="slide-out-left" class="side-nav primary-color collapsible" style="left: -250px;">
+        <li>
+          <div class="sidenav-header">
+
+
+            <nav class="sidenav-lang">
+              <!-- Social Bar -->
+              <div class="nav-social">
+                <span style="float: left;height: 44px;line-height: 44px;padding: 0;left: 9px;"><span class="lng-text-idioma" >IDIOMA</span>&nbsp&nbsp </span>
+                <span style="float:left"><a href="javascript:changeIdioma('es');" class="idioma es">&nbsp ES &nbsp</a></span>
+                <span style="float:left"><a href="javascript:changeIdioma('en');" class="idioma en">&nbsp EN &nbsp</a></span>
+                <span style="float:left"><a href="javascript:changeIdioma('gl');" class="idioma gl">&nbsp GAL &nbsp </a></span>
+              </div>
+            </nav>
+            <!-- Avatar -->
+          </div>
+        </li>
+
+        <!-- Menu -->
+        <ul class="tabs_toggle" >
+          <li class="tab col s3 hide-header  btn-menu-div btn-cod-par">
+            <a href="#codpar" onclick=""class="no-child"><i class="fa fa-search"></i> <span class="lng-btn-menu-cod" >Código</span></a>
+          </li>    
+          <li class="tab col s3 hide-header  btn-menu-div btn-favoritos">
+            <a href="#favoritos" onclick=""class="no-child"><i class="fa fa-star-o"></i> <span class="lng-btn-menu-fav" >Favoritos</span></a>
+          </li> 
+          <li class="tab col s3 hide-header  btn-menu-div btn-lineas">
+            <a href="#lineas" onclick="" class="no-child"><i class="fa fa-bus"></i> <span class="lng-btn-menu-lin" >Líneas</span></a>
+          </li>    
+          <!-- <li class="tab col s3 hide-header  btn-menu-div btn-cercanas">
+            <a href="#cercanas" onclick="redibujarMapa()" class="no-child"><i class="ion-ios-navigate-outline"></i> <span class="lng-btn-menu-cer" >Cercanas</span></a>
+          </li>         -->
+          <!-- <li class="tab col s3 hide-header  btn-menu-div btn-calcula-ruta">
+            <a href="#calcula-ruta" onclick=""class="no-child"><i class="ion-map"></i> <span class="lng-btn-menu-ruta" >Calcula tu ruta</span></a>
+          </li>
+          <li class="tab col s3 hide-header  btn-menu-div btn-transbordos">
+            <a href="#transbordos" onclick=""class="no-child"><i class="ion-ios-shuffle-strong"></i> <span class="lng-btn-menu-transbordo" >Transbordo gratuito</span></a>
+          </li> -->
+          <li class="tab col s3 hide-header  btn-menu-div btn-precios">
+            <a href="#tarifas" onclick=""class="no-child"><i class="fa fa-ticket"></i> <span class="lng-btn-menu-tarifas" >Tarifas</span></a>
+          </li>   
+          <li class="tab col s3 hide-header  btn-menu-div btn-configuracion">
+            <a href="#configuracion" onclick="cargarConfiguracion()"class="no-child"><i class="fa fa-gear"></i> <span class="lng-btn-menu-config" >Configuración</span></a>
+          </li>
+
+        </ul>
+      </ul>
+      <!-- End of Sidebars -->
+
+      <!-- Toolbar -->
+
+      <!-- End of Toolbar -->
+      
+      <!-- Page Contents -->
+
+      <div id="header-wrap">
+
+        <div id="toolbar"  style="z-index:10; height:55px;width:56px !important;">
+          <div class="open-left" id="open-left" data-activates="slide-out-left" style="height:inherit;line-height: 40px;">
+            <i class="ion-android-menu" style="line-height:40px !important"></i>
+          </div>
+        </div>
+
+        <!-- Hero Header -->
+
+        <div id="cabecera-imagen" class="header-index hero-big" style="display:block">
+
+        </div>
+
+        <!-- End Hero Header -->
+
+
+        <!-- Menu -->
+
+        <div class="menu" style="display:block">
+          <ul class="tabs tabs_toggle  opcion-menu-index2" style="width: 100%;overflow-x:overlay;overflow-y:hidden">
+            <li id="li_codpar" class="tab col s3 hide-header btn-menu-div btn-codpar">
+              <a class="" href="#codpar">
+                <div class="icon-menu"><i class="fa fa-search"></i><span class="visuallyhidden">Código</span></div>
+                <div class="nom-menu"><span class="lng-btn-codigo">Código</span></div>
+              </a>
+            </li>
+            <li id="li_favoritos" class="tab col s3 hide-header  btn-menu-div btn-favoritos">
+              <a class="" href="#favoritos">
+                <div class="icon-menu"><i class="fa fa-star-o"></i><span class="visuallyhidden">Favoritos</span></div>
+                <div class="nom-menu"><span class="lng-btn-fav">Favoritos</span></div>
+              </a>
+            </li>
+            <li id="li_lineas" class="tab col s3 hide-header btn-menu-div btn-lineas">
+              <a class="" href="#lineas">
+                <div class="icon-menu"><i class="fa fa-bus"></i><span class="visuallyhidden">Líneas</span></div>
+                <div class="nom-menu"><span class="lng-btn-lineas">Líneas</span></div>
+              </a>
+            </li>
+            <!-- <li id="li_cercanas" class="tab col s3 hide-header show-map btn-menu-div btn-cercanas">
+              <a  class="active" href="#cercanas" onclick="redibujarMapa()">
+                <div class="icon-menu"><i class="ion-ios-navigate-outline"></i><span class="visuallyhidden">Cercanas</span></div>
+                <div class="nom-menu"><span class="lng-btn-cercanas">Cercanas</span></div>
+              </a>
+            </li> -->
+
+          </ul>
+        </div>
+
+        <!-- End Menu -->
+
+      </div>
+
+
+
+      <div id="content" >
+        <div id="content-message" style="display:none">
+
+
+       
+          <div id="message" class="message">
+              <span class="icono"></span>
+              <span class="texto"></span>
+          </div>
+
+        </div>
+
+
+        <div id="content-info" style="display:block">
+
+
+        <!-- Codigo Parada -->
+          <div id="codpar" class="menu-div" style="display:none">
+            <div class="buscar-codigo-parada " style="height:40px;">
+             <form action="#">
+                <div class="file-field input-field">
+                  <div class="btn background-color-itranvias">
+                    <input id="btn-buscar-codigo-parada" type="submit" value="Buscar">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input id="search" class="file-path validate" type="number" autocomplete="off" autofocus>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div id="cabecera-tabla" style="margin-top:40px;" "="">
+              <span class="titulo" style="width:100%;"><span class="lng-head-ultimas">Últimas paradas consultadas</span></span>
+            </div>            
+            <div id="recientes-container" >
+              <p><span class="lng-text-ultimas">No hay parardas recientes para mostrar</span></p>
+            </div>
+
+          </div>
+        <!-- End Codigo Parada -->
+        <!-- Favoritos -->
+          <div id="favoritos" class="menu-div">
+
+
+
+
+
+            <div id="template-tarjeta-favorito-linea" class="mix tarjeta-favorito tarjeta-favorito-linea" data-codparada="template" style="display:none">
+              <div class="codigo-linea"></div>
+              <div class="datos-linea  waves-effect waves-light">
+                <div class="origen-linea"></div>
+                <div class="destino-linea"></div>
+              </div>
+            </div>
+
+            <div id="template-tarjeta-favorito-parada" class="mix tarjeta-favorito tarjeta-favorito-parada" data-codparada="template" style="display:none" >
+              <div class="codigo-parada"></div>
+              <div class="datos-parada  waves-effect waves-light">
+                <div class="nombre-parada"></div>
+                <div class="enlaces-parada">
+                  <span id="template-enlaces-2" class="enlaces-linea" style="display:none"></span>
+                </div>              
+              </div>
+            </div>
+
+            <ul class="tabs border-top " style="width: 100%;">
+              <li id="li-tab-fav-todos" class="filter tab col s3" data-filter="all"><a id="a-tab-fav-todos" href=""><span class="lng-tab-todos">Todos</span></a></li>
+              <li id="li-tab-fav-lineas" class="filter tab col s3" data-filter=".tarjeta-favorito-linea"><a id="a-tab-fav-lineas" class="" href=""><span class="lng-tab-lineas">Lineas</span></a></li>
+              <li id="li-tab-fav-paradas" class="filter tab col s3" data-filter=".tarjeta-favorito-parada"><a id="a-tab-fav-paradas" class="" href=""><span class="lng-tab-paradas">Paradas</span></a></li>
+            </ul>           
+            <div class="indicator" style="left: 0px; right: 213px;"></div>
+
+            <div id="filter-favoritos">
+              <li id="tarjeta-tiempo-proximo-template" style="display:none">
+                <span class="enlaces-linea"></span>
+                <span style="padding:0 5px"><span class="lng-text-bus">Bus: </span><span class='numbus'></span></span>
+                <span style="padding:0 5px"><span class="lng-text-tiempo">Tiempo: </span><span class="minutos"> </span></span>
+              </li>
+              <div id="favoritos-container" class="ayuntamiento">
+                <div id="message" class="mix"><span class="icono"><span class="ion-android-cloud-outline"></span></span><span class="texto">Non existen favoritos neste momento</span></div>
+              </div>
+            </div>
+          </div>  
+
+        <!-- End Favoritos -->
+        <!-- Cercanas -->
+          <div id="cercanas" class="menu-div" style="display: block;">
+            <div id="mapa-cercanas" style="display:block"></div>
+            <div id="template-tarjeta-parada-cercana" class="tarjeta-favorito tarjeta-favorito-parada" style="display:none">
+              <div class="codigo-parada">
+                <div class="parada"></div>
+                <div class="metros"></div>
+              </div>
+              <div class="datos-parada  waves-effect waves-light">
+                <div class="nombre-parada"></div>
+                <div class="enlaces-parada">
+                  <span id="template-enlaces" class="enlaces-linea" style="display:none"></span>
+                </div>              
+              </div>
+            </div>
+            <div id="cabecera-tabla" style="margin-top:45vh;">
+              <span class="titulo" style="width:15%;"><span class="lng-head-cerc-codigo">Código</span></span>
+              <span class="titulo" style="width:85%;"><span class="lng-head-cerc-parada">Parada</span>
+            </div>
+            <div id="cercanas-container" class="ayuntamiento">
+              <div class="loading">
+                <span class="message"><span class="lng-txt-buscando-par">Buscando paradas cercanas</span></span>
+              </div>
+
+            </div>
+
+          </div>
+        <!-- End Cercanas -->
+
+        <!-- Lineas -->
+          
+          <div id="lineas"  class="menu-div" style="display:block">
+            <div id="template-tarjeta-linea" class="tarjeta-lineas font-ayuntamiento  waves-effect waves-light" style="display:none">          
+              <div class="codigo-linea"></div>
+              <div class="datos-linea">
+                <span class="origen-linea"></span>
+                <span class="destino-linea"></span>
+              </div>
+
+            </div>
+            <span id="lineas-container" class="ayuntamiento"></span>
+          </div>
+          
+          <div id="lineas-cargando" style="display:none;text-align:center">
+            <div id="preloader">
+              <div class="progress">
+                  <div class="indeterminate"></div>
+              </div>
+                <p><span class="texto ayuntamiento"><span class="lng-txt-descargando-datos">Conectando con el servidor para descargar información</span></p>
+
+            </div>
+
+          </div>
+
+        <!-- End Lineas -->
+
+        <!-- Resultado -->
+
+          <div id="resultado" class="resultado-container result-codpar-index menu-div" style="display:none">
+
+            <div class="actualizacion actualiza-resultado">
+              <span class="ultima-actualizacion"></span>
+              <i class="icono-refresco ion-refresh right"></i>
+            </div>     
+            <ul class="collapsible  cabecera-resultado" data-collapsible="accordion">
+              <li >
+                <div class="collapsible-header cabecera-parada">
+                  <span class="visuallyhidden">Desplegar opciones </span>
+                  <i class="ion-android-arrow-dropdown right "></i><div class="nombre-parada"></div>
+                </div>
+                <div class="collapsible-body" style="display: none; background-color:white;">
+                  <ul id="container-submenu" style="display:block">
+                    <li class="add-fav-parada">
+                      <span class="no-child">
+                        <i class="ion-android-star-outline"></i> <span class="lng-menu-addfav">Añadir a favoritos</span>
+                      </span>
+                    </li> 
+                    <li class="ver-mapa-parada">
+                      <span class="no-child">
+                        <i class="ion-map"></i><span class="lng-menu-mapa">Ver mapa</span>
+                      </span>
+                    </li> 
+                  </ul>
+                </div>
+              </li>
+            </ul>            
+            <ul  class="collapsible checkout-header " data-collapsible="accordion">
+
+
+              <div id="aviso" style="display:none">        
+                  <span class="icono"></span>
+                  <span class="texto"></span>
+              </div>
+              
+                <li id="template-tarjeta-tiempo" style="display:none">
+                  <div  class="collapsible-header tarjeta-tiempo">
+                    <div class="codigo-linea color-linea font-ayuntamiento" style="background-color:rgba(77,185,76,1)"><span class="visuallyhidden">Línea</span><span class="txt-cod-linea"> -- </span></div>
+                    <div class="datos-ubicacion font-estimacion no-parada" style="background-color:rgba(77,185,76,0.6);display:block">
+                      <div class="bus-llegada">
+                        <span class="activity-time ">
+                          <span class="ion-android-bus icono-itranvias"></span> 
+                        </span>
+                        <span class="visuallyhidden">Bus</span><span class="txt-num-bus"> -- </span>
+
+                      </div>
+                      <div class="metros-llegada" >
+                        <span class="activity-time ">
+                          <span class="icon-distancia icono-itranvias"></span> 
+                          <span class="visuallyhidden">Distancia</span>
+                          <span class="txt-distancia-bus"> -- mts</span>
+                        </span>
+                      </div>
+                      <div class="parada-bus"><span class="icon-posicion-bus icono-itranvias"></span><span class="visuallyhidden">Última parada </span><span class="txt-parada-bus"></span> </div>
+                    </div>
+                    <div class="tiempo-llegada font-estimacion no-parada" style="background-color:rgba(77,185,76,0.4);display:block">
+                      <span class="visuallyhidden">a </span>
+
+                      <span class="txt-tiempo"></span>
+                    </div>
+                    <span class="visuallyhidden">Minutos.</span>
+                  
+                    <div class="bus-enparada font-estimacion en-parada" style="background-color:rgba(77,185,76,0.6);display:none">
+                      <div class="bus-llegada">
+                        <span class="activity-time">
+                          <i class="ion-android-bus"></i> 
+                          <span class="visuallyhidden">Bus número </span>
+                          <span class="txt-num-bus"> -- </span>
+                        </span>
+                      </div>
+                      <span class="texto-llegada lng-txt-enparada">En parada.</span>
+                    </div>
+                  </div>
+
+                  <div id="lista-proximos-buses" class="collapsible-body z-depth-1 no-padding proximos" style="display: block;">
+
+
+                    <div id="template-proximos-buses" class="proximos-buses"  style="display: none;">  
+                      
+                      <div class="datos-ubicacion font-estimacion" style="">
+                        <div class="bus-llegada" >
+                          <span class="activity-time ">
+                            <i class="ion-android-bus"></i> 
+                            <span class="prox-txt-num-bus"> -- </span>
+                          </span>
+                        </div>
+
+                        <div class="metros-llegada" >
+                          <span class="activity-time ">
+                            <i class="icon-distancia icono-itranvias"></i> 
+                            <span class="prox-txt-distancia-bus"> -- </span>
+                          </span>
+                        </div>
+                        <div class="parada-llegada"><span class="icon-posicion-bus icono-itranvias"></span><span class="prox-txt-parada-bus"> -- </span></div>
+                      </div>
+                      <div class="tiempo-llegada font-estimacion" style=""> <span class="prox-txt-tiempo"> -- </span> </div>
+                    </div>
+
+
+
+                  </div>
+
+                </li>
+                
+                <div id="cabecera-tabla" style="margin-top:68px;"">
+                  <span class="titulo" style="width:20%;"><span class="lng-head-res-lin">Línea</span></span>
+                  <span class="titulo" style="width:60%;"><span class="lng-head-res-info">Información línea</span></span>
+                  <span class="titulo" style="width:20%;"><span class="lng-head-res-min">Minutos</span></span>
+
+                </div>
+
+            </ul>
+            <span class="tarjetas-tiempo-container" class="ayuntamiento">
+            </span>
+
+
+          </div>
+
+        <!-- End Resultado -->
+        <!-- Paradas -->
+          <div id="paradas" class="menu-div" style="display:none">
+            <div id="tabs-paradas" style="background-color:white">
+
+
+              <ul class="tabs border-top " style="width: 100%;">
+                <li id="li-tab-ida" class="tab col s1"><a id="a-tab-ida" class="active" href="#ida"><span class="lng-tab-ida">Ida</span></a></li>
+                <li id="li-tab-vue" class="tab col s2"><a id="a-tab-vue" class="" href="#vuelta"><span class="lng-tab-vue">Vuelta</span></a></li>
+                <li id="li-tab-result" class="tab col s3 disabled"><a id="a-tab-result" class="" href="#tab-result"><span class="lng-tab-result">Información<br/>parada</span></a></li>
+                <div class="indicator" style="right: 240px; left: 0px;"></div>
+              </ul>
+
+            </div>
+            <div id="content-paradas">
+              <div id="template-tarjeta-parada" class="tarjeta-parada" data-codparada="template" style="display:none">
+                <div class="parada-point"></div>
+                <div class="datos-parada  waves-effect waves-light">
+                  <div class="nombre-parada"></div>
+                  <div class="enlaces-parada">
+                    <span id="template-enlaces" class="enlaces-linea" style="display:none"></span>
+                  </div>
+                </div>
+              </div>
+              <div id="template-dibujo-bus"class="dibujo-bus" style="display:none">
+                <span class="ion-android-bus"><span class="numero-bus"></span></span>
+              </div>
+              <div id="ida" style="display:block" >
+                <div class="actualizacion actualiza-buses">
+                  <span class="ultima-actualizacion"></span>
+
+                  <i class="icono-refresco ion-refresh right"></i>
+
+
+                </div>
+                <ul class="collapsible  cabecera-resultado" data-collapsible="accordion">
+                  <li >
+                    <div class="collapsible-header collapsible-header-paradas">
+                      <span class="visuallyhidden">Desplegar opciones </span>
+                      <i class="ion-android-arrow-dropdown right"></i>
+                      <div class="cabecera-direccion">
+                        <span class="codigo-linea"></span>
+                        <span class="nombre-linea"></span>
+                      </div>
+                    </div>
+                    <div class="collapsible-body" style="display: none; background-color:white;">
+                      <ul id="container-submenu" style="display:block">
+                        <li class="add-fav-linea">
+                          <span class="no-child">
+                            <i class="ion-android-star-outline"></i> <span class="lng-menu-addfav">Añadir a favoritos</span>
+                          </span>
+                        </li>
+                        <li class="ver-mapa-linea">
+                          <span class="no-child">
+                            <i class="ion-map"></i><span class="lng-menu-mapa">Ver mapa</span>
+                          </span>
+                        </li> 
+                        <li class="ver-horarios-linea ida">
+                          <span class="no-child">
+                            <i class="ion-android-calendar"></i><span class="direccion-ida lng-menu-horario">Ver horarios sentido ida</span>
+                          </span>
+                        </li>   
+                        <li class="ver-horarios-linea vue">
+                          <span class="no-child">
+                            <i class="ion-android-calendar"></i><span class="direccion-vuelta  lng-menu-horario">Ver horarios sentido vuelta</span>
+                          </span>
+                        </li>                        
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+
+                <div id="buses-container-ida" style="padding-top:68px;"></div>
+                <div id="paradas-container-ida" class="bus-line ayuntamiento"></div>
+              </div>
+              <div id="vuelta" style="display:none" >
+                <div class="actualizacion actualiza-buses">
+                  <span class="ultima-actualizacion"></span>
+                  <i class="icono-refresco ion-refresh right"></i>
+                </div>
+                <ul class="collapsible  cabecera-resultado" data-collapsible="accordion">
+                  <li >
+                    <div class="collapsible-header collapsible-header-paradas">
+                      <span class="visuallyhidden">Desplegar opciones </span>
+                      <i class="ion-android-arrow-dropdown right"></i>
+                      <div class="cabecera-direccion">
+                        <span class="codigo-linea"></span>
+                        <span class="nombre-linea"></span>
+                      </div>
+                    </div>
+                    <div class="collapsible-body" style="display: none;background-color:white;">
+                      <ul id="container-submenu" style="display:block">
+                        <li class="add-fav-linea">
+                          <span class="no-child">
+                            <i class="ion-android-star-outline"></i> <span class="lng-menu-addfav">Añadir a favoritos</span>
+                          </span>
+                        </li> 
+                        <li class="ver-mapa-linea">
+                          <span class="no-child">
+                            <i class="ion-map"></i><span class="lng-menu-mapa">Ver mapa</span>
+                          </span>
+                        </li> 
+
+                        <li class="ver-horarios-linea vue">
+                          <span class="no-child">
+                            <i class="ion-android-calendar"></i><span class="direccion-vuelta  lng-menu-horario">Ver horarios sentido vuelta</span>
+                          </span>
+                        </li>  
+                        <li class="ver-horarios-linea ida">
+                          <span class="no-child">
+                            <i class="ion-android-calendar"></i><span class="direccion-ida lng-menu-horario">Ver horarios sentido ida</span>
+                          </span>
+                        </li>                          
+                      </ul>
+
+                    </div>
+                  </li>
+
+                </ul>  
+                <div id="buses-container-vuelta" style="padding-top:68px;"></div>
+                <div id="paradas-container-vuelta" class="bus-line ayuntamiento">
+
+
+               
+                </div>
+              </div>    
+              <div id="tab-result"  class="resultado-container" style="display:none">
+                <div class="actualizacion actualiza-resultado">
+                  <span class="ultima-actualizacion"></span>
+                  <i class="icono-refresco ion-refresh right"></i>
+                </div>     
+                <ul class="collapsible  cabecera-resultado" data-collapsible="accordion">
+                  <li >
+                    <div class="collapsible-header cabecera-parada">
+                      <span class="visuallyhidden">Desplegar opciones </span>
+                      <i class="ion-android-arrow-dropdown right"></i><div class="nombre-parada"></div>
+                    </div>
+                    <div class="collapsible-body" style="display: none; background-color:white;">
+                      <ul id="container-submenu" style="display:block">
+                        <li class="add-fav-parada">
+                          <span class="no-child">
+                            <i class="ion-android-star-outline"></i> <span class="lng-menu-addfav">Añadir a favoritos</span>
+                          </span>
+                        </li> 
+                        <li class="ver-mapa-parada">
+                          <span class="no-child">
+                            <i class="ion-map"></i><span class="lng-menu-mapa">Ver mapa</span>
+                          </span>
+                        </li> 
+                      </ul>
+                    </div>
+                  </li>
+                </ul> 
+                <div id="cabecera-tabla" style="margin-top:68px;"">
+                  <span class="titulo" style="width:20%;"><span class="lng-head-res-lin">Línea</span></span>
+                  <span class="titulo" style="width:60%;"><span class="lng-head-res-info">Información línea</span></span>
+                  <span class="titulo" style="width:20%;"><span class="lng-head-res-min">Minutos</span></span>
+                </div> 
+                <div class="tarjetas-tiempo-container" class="ayuntamiento"></div>
+
+              </div> 
+            </div>
+
+          </div> 
+        <!-- End Paradas -->
+        <!-- Modal Divs -->
+          <div id="modal-mapa-linea" class="modal modal-fixed-footer modal-itranvias">
+            <div class="modal-content" >
+              <h5><span class="nombre-linea"></span></h5>
+              <div id="mapa-linea" style="height:90%;width:100%;"></div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn-cancel">Cerrar</a>
+            </div>
+          </div>
+          <div id="modal-mapa-parada" class="modal modal-fixed-footer modal-itranvias">
+            <div class="modal-content" >
+              <h5><span class="nombre-parada"></span></h5>
+              <div id="mapa-parada" style="height:90%;width:100%;"></div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn-cancel">Cerrar</a>
+            </div>
+          </div>
+          <div id="modal-resultado-mapa" class="modal modal-fixed-footer modal-itranvias">
+            <div class="modal-content" >
+              <h5><span class="nombre-parada"></span></h5>
+
+              <div class="proximo-container"></div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cerrar</a>
+            </div>
+          </div>
+          <div id="modal-config-fav-parada" class="modal modal-fixed-footer " >
+            <div class="modal-content" >
+              <div class="input-field col s12">
+                <input id="nom-parada-fav" type="text" placeholder="">
+                <label for="nom-parada-fav" data-error="wrong" data-success="right">Nombre Parada</label>
+              </div>
+              <p class="mensaje" style="font-size:0.5em"><span class="lng-txt-config-parada">Introduzca un nombre para la parada y pulse "Grabar"</span></p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn-grabar"><span class="lng-btn-save">Grabar</span></a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn-cancel"><span class="lng-btn-cancelar">Cancelar</span></a>
+            </div>
+          </div>
+          <div id="modal-config-fav-linea" class="modal modal-fixed-footer modal-config-fav ">
+            <div class="modal-content">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Aquí va el nombre de la parada" id="nombre-parada" type="text" class="validate">
+                  <label for="first_name" class="active">Nombre Parada</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat float-right"><span class="lng-btn-cancelar">Cancelar</span></a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat float-right"><span class="lng-btn-save">Grabar</span></a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat float-left"><span class="lng-btn-delete">Borrar</span></a>
+
+            </div>
+          </div>      
+          <div id="modal-horarios-linea" class="modal modal-fixed-footer modal-itranvias">
+            <div class="modal-content" >
+              <span class="nombre-linea"></span>
+              <input id="horarios-date" type="text" class="datepicker picker__input" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" placeholder="Seleccione la fecha" aria-owns="birthdate_root" />
+              <div class="row">
+                <div class="col s12">
+                  <table class="striped">
+                    <tr id="tr-template" style="display:none"></tr>
+                    <div class="fecha-solicitada"></div>
+                    <tbody class="horarios-container">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cerrar</a>
+            </div>
+          </div>  
+      
+        <!-- End Modal Divs -->
+        <!-- Configuracion -->
+          <div id="configuracion" class="menu-div" style="display:none;height:100%">
+
+            <div class="p-5" style="text-align: center;">
+              <p> <span class="lng-conf-idioma">Seleccione el idioma </span></p>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="select-idioma" onchange="changeIdioma(this.value)">
+                    <option value="" disabled selected>Seleccione su idioma</option>
+                    <option value="gl">Gallego</option>
+                    <option value="es">Castellano</option>
+                    <option value="en">English</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>  
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-inicio">Indique la pantalla principal de la aplicación</span></p>
+                <div class="row">
+
+                  <div class="input-field col s12">
+                    <select id="select-inicio" onchange="grabarParametroConfiguracion('inicio', this.value)">
+                      <option value selected="" disabled>---</option>
+                      <option value="li_codpar"><span class="lng-conf-option-cod">Código de parada</span></option>
+                      <option value="li_cercanas"><span class="lng-conf-option-loc">Localización</span></option>
+                      <option value="li_favoritos"><span class="lng-conf-option-fav">Favoritos</span></option>
+                      <option value="li_lineas"><span class="lng-conf-option-lin">Líneas</span></option>
+                    </select>
+                  </div>
+
+                </div>
+            </div>  
+            <div class="p-5" style="text-align: center;">
+              <p> <span class="lng-conf-adm-fav">Administre sus favoritos </span></p>
+              <ul class="collapsible checkout-header" data-collapsible="accordion">
+                <li class="">
+                  <div class="collapsible-header">
+                    <span class="lng-conf-gest-fav">Gestión de favoritos</span>
+                    <i class="ion-android-arrow-dropdown"></i>
+                  </div>
+                  <div id="favoritos-container-config" class="collapsible-body z-depth-1" style="display: none; height:100%;">
+                    <p><span class="lng-conf-no-fav">No dispone de favoritos</span></p>
+                  </div>
+                </li>
+              </ul>
+            </div>   
+
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-numero-cer">Número de paradas cercanas a mostrar</span></p>
+              <div class="row">
+                <div class="col s6" style="padding-left: 30px;">
+                  <form action="#">
+
+                    <p class="range-field ">
+                      <input type="range" for="range-paradas-cercanas" id="range-paradas-cercanas" min="1" max="15" />
+                    </p>
+                  </form>
+                  <span class="lng-text-value">Valor: </span>
+                  <span class="value-range" id="paradas-value"></span>
+
+                </div>
+                <div class="col s6">
+                  <button id="save-cercanas" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action" ><span class="lng-btn-save">Grabar</span><i class="material-icons right"></i></button>
+
+                </div>
+              </div>
+            </div>  
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-distancia-cer">Distancia de paradas cercanas</span></p>
+              <div class="row">
+                <div class="col s6" style="padding-left: 30px;">
+                  <form action="#">
+
+                    <p class="range-field ">
+                      <input type="range" step="100" id="range-metros-cercanas"   min="1" max="5000" />
+
+                    </p>
+                  </form>
+                  <span class="lng-text-value">Valor: </span>
+                  <span class="value-range" id="metros-value"></span>
+                </div>
+                <div class="col s6">
+                  <button id="" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action"><span class="lng-btn-save">Grabar</span><i class="material-icons right"></i></button>
+
+                </div>
+              </div>
+            </div>  
+
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-borra-fav">Eliminar todos los favoritos</span></p>
+              <div class="row">
+                <div class="col s12">
+                      <button id="" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action" onclick="borrarFavoritos();"><span class="lng-btn-delete">Eliminar</span><i class="material-icons right"></i></button>
+
+                </div>
+              </div>
+            </div>
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-borra-recientes">Eliminar paradas recientes</span></p>
+              <div class="row">
+                <div class="col s12">
+                      <button id="" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action" onclick="borrarRecientes();"><span class="lng-btn-delete">Eliminar</span><i class="material-icons right"></i></button>
+
+                </div>
+              </div>
+            </div>   
+            <div class="p-5" style="text-align: center;">
+              <p><span class="lng-conf-recargar">Recargar líneas y paradas desde el servidor.</span></p>
+              <div class="row">
+                <div class="col s12">
+                      <button id="" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action" onclick="recargarDatos();"><span class="lng-btn-reload">Recargar</span><i class="material-icons right"></i></button>
+
+                </div>
+              </div>
+            </div>         
+          </div>
+        <!-- End Configuracion -->
+
+        <!-- Calculo ruta -->
+          <div id="calcula-ruta" class="menu-div" style="display:none;">
+            <div id="content-calcula-ruta" class="p-20">
+              <form id="form-calcula-ruta" action="https://maps.google.es/maps" method="get" target="_blank">
+                <div class="row">
+                  <div class="col s10">
+                    <input title="Desde" id="buscador_desde" type="text" name="saddr" placeholder="Desde" value="" autocomplete="off">                     
+                  </div>
+                  <div class="col s2 getLocationDesde" style="text-align:center">
+                    <i class="ion-pinpoint"></i>                  
+                  </div>
+
+                </div>    
+                <div class="row">
+                  <div class="col s10">
+                    <input title="Hasta" id="buscador_hasta" type="text" name="daddr" placeholder="Hasta" value="" autocomplete="off">                    
+                  </div>
+                  <div class="col s2 getLocationHasta" style="text-align:center">
+                    <i class="ion-pinpoint"></i>                  
+                  </div>
+
+                </div>  
+
+
+
+                <input title="Hasta" type="hidden" name="dirflg" value="r">
+                <input title="Hasta" type="hidden" name="mra" value="ltm">
+                <input title="Hasta" type="hidden" name="t" value="m">
+                <p><span class="lng-txt-calculo-ruta">Al realizar el cálculo de la ruta, serás redirigido al servicio que Google Transit proporciona a los usuarios.</span></p>
+
+                <div style="text-align:center">
+                    <button class="btn waves-effect waves-light background-color-itranvias" type="submit" name="action"><span class="lng-btn-calcular">Calcular</span><i class="ion-send" style="text-decoration:none"></i></button>
+                </div>  
+              </form>
+
+            </div>
+
+          </div>  
+
+
+        <!-- End Calculo ruta -->
+
+        <!-- Tarifas -->
+          <div id="tarifas" class="menu-div" style="display:none;">
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th data-field="tarifa"><span class="lng-txt-tarifa">Tarifa</span></th>
+                  <th data-field="precio"><span class="lng-txt-precio">Precio</span></th>
+                </tr>
+              </thead>
+              <tbody id="content-tarifas"></tbody>
+            </table>
+            <span style="font-weight:bold"><span class="lng-txt-observaciones">Observaciones</span></span><br>
+            <div id="observaciones-tarifas"></div>
+            
+          </div>
+  
+        <!-- End Tarifas -->
+        <!-- Novedades -->
+          <div id="template-mensaje" class="p-20 novedad" style="display:none">
+            <h3 class="title">Titulo de la novedad</h3>
+            <div class="article">2016-01-15</div>
+            <p class="text-flow"><span class="mensaje"></p>
+          </div>
+          <div id="novedades" class="menu-div" style="display:none;">
+
+          </div>
+        <!-- End Novedades -->
+        <!-- Transbordos -->
+          <div id="transbordos" class="menu-div" style="display:none;">
+            <div>
+              <h5><span class="lng-txt-transbordo-gratis">Consulta de transbordo gratuito</span></h5>
+              <h6><span class="lng-txt-titulo-enlaces"></span></h6>
+              <div >
+
+                <div class="input-field col s12">
+                  <select id="select-ida-transbordo" class="required">
+                    <option value="" disabled selected>Seleccione línea de origen</option>
+
+                  </select>
+                </div>
+
+              </div>
+              <div >
+                <div class="input-field col s12">
+                  <select id="select-vue-transbordo" class="required">
+                    <option value="" disabled selected>Seleccione línea de destino</option>
+                  
+                  </select>
+                </div>
+              </div>
+              <div class="col s12" style="text-align:center">
+                <button id="consulta-transbordo" class="btn waves-effect waves-light btn-ok-config background-color-itranvias" type="submit" name="action" onclick="consultaTransbordo();" ><span class="lng-btn-menu-buscar">Buscar</span><i class="material-icons right"></i>
+                </button>
+              </div>
+              <div id="texto-transbordos">
+               
+              </div>
+
+            </div>
+          </div>  
+        <!-- End Transbordos -->
+        <!-- Templates -->
+
+
+          <div id="template-tarjeta-favorito-linea-config" class="mix tarjeta-favorito tarjeta-favorito-linea" data-codparada="template" style="display:none;font-size:14px !important;">
+            <div class="codigo-linea"></div>
+            <div class="datos-linea  waves-effect waves-light">
+              <div ><span style="font-size:14px !important;" class="origen-linea"></span> - <span style="font-size:14px !important;"class="destino-linea"></span></div>
+              <div class="botones">
+
+                <button  style="background:#3678f4" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
+              </div> 
+            </div>
+          </div>
+  
+          <div id="template-tarjeta-favorito-parada-config" class="mix tarjeta-favorito tarjeta-favorito-parada" data-codparada="template" style="display:none;">
+            <div class="codigo-parada"></div>
+            <div class="datos-parada  waves-effect waves-light">
+              <div class="nombre-parada"></div>
+              <div class="botones">
+                <button  style="background:#0089ec" class="btn btn-edit waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-editar">Editar</span><i class="material-icons right"></i></button>
+                <button  style="background:#3678f4" class="btn btn-borrar waves-effect waves-light btn-ok-config" type="submit" name="action" onclick=""><span class="lng-btn-delete">Borrar</span><i class="material-icons right"></i></button>
+              </div> 
+            </div>
+          </div>
+
+        <!-- End Template -->
+        </div> 
+      <!-- End Content-Info -->   
+      </div> 
+      <!-- End of Page Contents -->
+
+    </div><!-- End of Main Container -->
+    
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/materialize.min.js"></script> 
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script>
+        // document.write('<script type="text/javascript" src="js/main.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/Lineas_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/Paradas_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/Tiempos_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        // document.write('<script type="text/javascript" src="js/Mensajes_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/main.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/Lineas_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/Paradas_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/Tiempos_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+        document.write('<script type="text/javascript" src="https://s3.us-east-2.amazonaws.com/bigreni.com/js/coruna/3.1/Mensajes_obj.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+    </script>
+    <script src="js/Favoritos_obj.js"></script>
+    <script src="js/MapaItranvias_obj.js"></script>
+    <script src="js/Enlaces_obj.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-ECPf_aPKA4P2zrogh90dSkI1myqV9EU&sensor=true&language=es&callback=inicializaFormRuta&libraries=places"></script>
+
+    <script src="js/init.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript"  src="js/init-cordova.js"></script>
+
+  </body>
+</html>
