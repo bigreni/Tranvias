@@ -7,8 +7,13 @@
     "files": {}
   },
   "installed_plugins": {
+    "admob-plus-cordova": {
+      "APP_ID_ANDROID": "ca-app-pub-9249695405712287~6977743955",
+      "PLAY_SERVICES_VERSION": "23.0.0",
+      "PACKAGE_NAME": "com.tranvias.withads"
+    },
     "cordova-plugin-apprate": {
-      "PLAY_CORE_VERSION": "1.+",
+      "PLAY_REVIEW_VERSION": "2.+",
       "PACKAGE_NAME": "com.tranvias.withads"
     },
     "cordova-plugin-device": {
@@ -28,19 +33,17 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.tranvias.withads"
     },
-    "cordova-plugin-wkwebview-file-xhr": {
+    "cordova-plugin-nativestorage": {
       "PACKAGE_NAME": "com.tranvias.withads"
     },
-    "admob-plus-cordova": {
-      "APP_ID_ANDROID": "ca-app-pub-9249695405712287~6977743955",
-      "PLAY_SERVICES_VERSION": "20.5.0",
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "com.tranvias.withads"
+    },
+    "cordova-plugin-wkwebview-file-xhr": {
       "PACKAGE_NAME": "com.tranvias.withads"
     }
   },
   "dependent_plugins": {
-    "cordova-plugin-nativestorage": {
-      "PACKAGE_NAME": "com.tranvias.withads"
-    },
     "cordova-support-android-plugin": {
       "PACKAGE_NAME": "com.tranvias.withads"
     }
