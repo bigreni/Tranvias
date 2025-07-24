@@ -1,123 +1,63 @@
+    var interstitial;
+
     function onLoad() {
-        if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
+      if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent)) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
             document.addEventListener('deviceready', checkFirstUse, false);
         } else {
             notFirstUse();
         }
     }
 
-    var admobid = {};
-    if (/(android)/i.test(navigator.userAgent)) {
-        admobid = { // for Android
-            banner: 'ca-app-pub-1683858134373419/2524889484',
-            interstitial:'ca-app-pub-9249695405712287/8454477151'
-           //banner: 'ca-app-pub-3886850395157773/3411786244'
-            //interstitial: 'ca-app-pub-9249695405712287/3301233156'
-        };
-    }
-    else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { // for ios
-     admobid = {
-            banner: 'ca-app-pub-1683858134373419/2524889484',
-            interstitial:'ca-app-pub-9249695405712287/9598291958'
-    };
-  }
 
     function initApp() {
-        if (!AdMob) { alert('admob plugin not ready'); return; }
-        initAd();
-        // display the banner at startup
-        loadInterstitial();
-        //createSelectedBanner();
-        loadApp();
-    }
-    function initAd() {
-        var defaultOptions = {
-            // bannerId: admobid.banner,
-            // interstitialId: admobid.interstitial,
-            // adSize: 'SMART_BANNER',
-            // width: integer, // valid when set adSize 'CUSTOM'
-            // height: integer, // valid when set adSize 'CUSTOM'
-            position: AdMob.AD_POSITION.BOTTOM_CENTER,
-            // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
-            bgColor: 'black', // color name, or '#RRGGBB'
-            // x: integer,      // valid when set position to 0 / POS_XY
-            // y: integer,      // valid when set position to 0 / POS_XY
-            isTesting: false // set to true, to receiving test ad for testing purpose
-            // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
-        };
-        AdMob.setOptions(defaultOptions);
-        registerAdEvents();
-//        AndroidFullScreen.immersiveMode(successFunction, errorFunction);    
+      if (/(android)/i.test(navigator.userAgent)){
+        interstitial = new admob.InterstitialAd({
+            //dev
+            //adUnitId: 'ca-app-pub-3940256099942544/1033173712'
+            //prod
+            adUnitId: 'ca-app-pub-9249695405712287/8454477151'
+          });
         }
+        else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
+            interstitial = new admob.InterstitialAd({
+                //dev
+                //adUnitId: 'ca-app-pub-3940256099942544/4411468910'
+                //prod
+                adUnitId: 'ca-app-pub-9249695405712287/9598291958'
+              });
+        }
+        registerAdEvents();
+        interstitial.load();
+        //createSelectedBanner();
+        //loadApp();
+    }
+
     // optional, in case respond to events or handle error
     function registerAdEvents() {
-
-        // new events, with variable to differentiate: adNetwork, adType, adEvent
-        document.addEventListener('onAdFailLoad', function (data) {
-            //// old version  
-            //var iframe = document.getElementById('embed');
-            //iframe.src = iframe.src;
-            //document.getElementById('fullpage').style.display = 'block';
-            //// New version
-            document.getElementById('main').style.visibility = 'visible';
-            document.getElementById('screen').style.display = 'none';
-        });
-        document.addEventListener('onAdLoaded', function (data) {
-            //AdMob.showInterstitial();
-            document.getElementById('main').style.visibility = 'visible';
-            document.getElementById('screen').style.display = 'none';
-        });
-        document.addEventListener('onAdPresent', function (data) { });
-        document.addEventListener('onAdLeaveApp', function (data) { });
-        document.addEventListener('onAdDismiss', function (data) {
-            //// old version  
-            //var iframe = document.getElementById('embed');
-            //iframe.src = iframe.src;
-            //document.getElementById('fullpage').style.display = 'block';
-            //// New version
-            document.getElementById('main').style.visibility = 'visible';
-            document.getElementById('screen').style.display = 'none';
-			});
-    }
-
-    function createSelectedBanner() {
-       AdMob.createBanner({adId:admobid.banner});
-    }
-
-    function successFunction()
-    {
-    }
- 
-    function errorFunction(error)
-    {
-    }
-
-    function loadInterstitial() {
-        if ((/(android|windows phone)/i.test(navigator.userAgent))) {
-            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: false });
-            //document.getElementById('main').style.visibility = 'visible';
-            //document.getElementById('screen').style.display = 'none';    
-        } else if ((/(ipad|iphone|ipod)/i.test(navigator.userAgent))) {
-            AdMob.prepareInterstitial({ adId: admobid.interstitial, isTesting: false, autoShow: false });
-            //document.getElementById('main').style.visibility = 'visible';
-            //document.getElementById('screen').style.display = 'none';    
-        } else
-        {
-            document.getElementById('main').style.visibility = 'visible';
-            document.getElementById('screen').style.display = 'none';   
-        }
-    }
+      // new events, with variable to differentiate: adNetwork, adType, adEvent
+          document.addEventListener('admob.ad.load', function (data) {
+              document.getElementById('main').style.visibility = 'visible';
+              document.getElementById("screen").style.display = 'none';    
+          });
+          document.addEventListener('admob.ad.loadfail', function (data) {
+              document.getElementById('main').style.visibility = 'visible';
+              document.getElementById("screen").style.display = 'none'; 
+          });
+          document.addEventListener('admob.ad.show', function (data) { 
+              document.getElementById('main').style.visibility = 'visible';
+              document.getElementById("screen").style.display = 'none';     
+          });
+          document.addEventListener('admob.ad.dismiss', function (data) {
+              document.getElementById('main').style.visibility = 'visible';
+              document.getElementById("screen").style.display = 'none';     
+          });
+      }
 
     function showAd()
     {
-        document.getElementById("screen").style.display = 'block';     
-        if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-            AdMob.isInterstitialReady(function(isready){
-                if(isready) 
-                    AdMob.showInterstitial();
-            });
-        }
-        document.getElementById("screen").style.display = 'none'; 
+      document.getElementById("screen").style.display = 'block';     
+      interstitial.show();
+      document.getElementById("screen").style.display = 'none'; 
     }
 
 
@@ -133,6 +73,57 @@
         document.getElementById('main').style.visibility = 'visible';
         document.getElementById('screen').style.display = 'none';
     }
+
+    function initApp1()
+{
+    if (/(android)/i.test(navigator.userAgent)){
+    interstitial = new admob.InterstitialAd({
+        //dev
+        //adUnitId: 'ca-app-pub-3940256099942544/1033173712'
+        //prod
+        adUnitId: 'ca-app-pub-9249695405712287/8454477151'
+      });
+    }
+    else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
+        interstitial = new admob.InterstitialAd({
+            //dev
+            //adUnitId: 'ca-app-pub-3940256099942544/4411468910'
+            //prod
+            adUnitId: 'ca-app-pub-9249695405712287/9598291958'
+          });
+    }
+    registerAdEvents1();
+    interstitial.load();
+}
+
+function registerAdEvents1() {
+    // new events, with variable to differentiate: adNetwork, adType, adEvent
+    document.addEventListener('admob.ad.load', function (data) {
+      document.getElementById('main').style.visibility = 'visible';
+      document.getElementById("screen").style.display = 'none';     
+    });
+    document.addEventListener('admob.ad.loadfail', function (data) {
+      document.getElementById('main').style.visibility = 'visible';
+      document.getElementById("screen").style.display = 'none';     
+    });
+    document.addEventListener('admob.ad.show', function (data) { 
+      document.getElementById('main').style.visibility = 'visible';
+      document.getElementById("screen").style.display = 'none';     
+    });
+    document.addEventListener('admob.ad.dismiss', function (data) {
+      document.getElementById('main').style.visibility = 'visible';
+      document.getElementById("screen").style.display = 'none';     
+    });
+}
+
+function showAd1()
+{
+    document.getElementById("screen").style.display = 'block';     
+    if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent)) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
+        interstitial.show();
+    }
+    document.getElementById("screen").style.display = 'none'; 
+}
 
     function checkPermissions(){
       const idfaPlugin = cordova.plugins.idfa;
@@ -155,19 +146,20 @@
 
 function askRating()
 {
-  cordova.plugins.AppRate.setPreferences = {
-    reviewType: {
-        ios: 'AppStoreReview',
-        android: 'InAppBrowser'
-        },
+    const appRatePlugin = AppRate;
+    appRatePlugin.setPreferences({
+        reviewType: {
+            ios: 'AppStoreReview',
+            android: 'InAppBrowser'
+            },
   useLanguage:  'es',
   usesUntilPrompt: 10,
-  promptAgainForEachNewVersion: false,
+  promptAgainForEachNewVersion: true,
   storeAppURL: {
                 ios: '1227250068',
                 android: 'market://details?id=com.tranvias.withads'
                }
-};
+});
  
 AppRate.promptForRating(false);
 }
@@ -259,4 +251,139 @@ function onDeviceReady(){
     $('#content').css('padding-top',$('#header-wrap').height());
 
   })	
+}
+
+function proSubscription()
+{
+    window.location = "Subscription.html";
+    //myProduct.getOffer().order();
+}
+
+var platformType;
+var productId;
+
+function checkSubscription()
+{
+    if (/(android)/i.test(navigator.userAgent)){
+        platformType = CdvPurchase.Platform.GOOGLE_PLAY;
+    }
+    else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
+        platformType = CdvPurchase.Platform.APPLE_APPSTORE;
+    }
+    else{
+        platformType = CdvPurchase.Platform.TEST;
+    }
+    //var pro = localStorage.getItem("proVersion");
+    productId = localStorage.getItem("productId");
+    CdvPurchase.store.register([{
+        type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
+        id: 'proversion',
+        platform: platformType,
+        },
+        {
+        type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
+        id: 'pro_biannual',
+        platform: platformType,
+        },
+        {
+        type: CdvPurchase.ProductType.PAID_SUBSCRIPTION,
+        id: 'pro_annual',
+        platform: platformType,
+        }]); 
+        
+    //   CdvPurchase.store.initialize([CdvPurchase.Platform.TEST]);
+        CdvPurchase.store.initialize([platformType]);
+        
+        //CdvPurchase.store.when().productUpdated(onProductUpdated);
+        //CdvPurchase.store.when().approved(onTransactionApproved);
+        //CdvPurchase.store.restorePurchases();
+        //CdvPurchase.store.update();
+        // if (/(android)/i.test(navigator.userAgent))
+        // {
+             CdvPurchase.store.when().receiptsReady(onReceiptReady);
+        // }
+        // else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
+        //CdvPurchase.store.when().receiptUpdated(onReceiptUpdated);
+        //}
+        //CdvPurchase.store.when().receiptsVerified(onProductUpdated);
+}
+
+function onTransactionApproved(transaction)
+{
+      localStorage.proVersion = 1;
+      localStorage.productId = transaction.products[0].id;
+      transaction.finish();
+      //window.location = "index.html";
+}
+
+var iapInitialReceiptUpdated = false;
+
+function onReceiptUpdated(receipt)
+{
+    CdvPurchase.store.restorePurchases();
+    if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document))
+    {
+        if(!iapInitialReceiptUpdated){
+            if(receipt.transactions.length == 1){
+                receipt.verify();
+            }
+            iapInitialReceiptUpdated=true;
+        }
+    }
+
+    productId = localStorage.getItem("productId");
+    //alert(receipt.transactions[0].products[0].id);
+    //CdvPurchase.store.update();
+    var owned = CdvPurchase.store.owned(productId, platformType);
+    //alert("owned: " + owned)
+    //const product = CdvPurchase.store.get(productId, platformType);
+    //alert("desc: " + + product.description + '- ID: ' + product.id + '- Platform: ' + product.platform + '- Owned:' + product.owned + '- Title:' + product.title);
+    if(owned != null && owned)
+    {
+        //alert("setting pro");
+        localStorage.proVersion = 1;
+        localStorage.productId = productId;
+    }
+    else
+    {
+        //alert("not pro");
+        localStorage.proVersion = 0;
+        //localStorage.productId = "";
+    }
+    
+}
+
+function onReceiptReady()
+{
+    CdvPurchase.store.restorePurchases();
+    const receipt = CdvPurchase.store.localReceipts[0];
+    if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document))
+    {
+        if(!iapInitialReceiptUpdated){
+            if(receipt.transactions.length == 1){
+                receipt.verify();
+            }
+            iapInitialReceiptUpdated=true;
+        }
+    }
+
+    productId = localStorage.getItem("productId");
+    //alert(receipt.transactions[0].products[0].id);
+    //CdvPurchase.store.update();
+    var owned = CdvPurchase.store.owned(productId, platformType);
+    //alert("owned: " + owned)
+    //const product = CdvPurchase.store.get(productId, platformType);
+    //alert("desc: " + + product.description + '- ID: ' + product.id + '- Platform: ' + product.platform + '- Owned:' + product.owned + '- Title:' + product.title);
+    if(owned != null && owned)
+    {
+        //alert("setting pro");
+        localStorage.proVersion = 1;
+        localStorage.productId = productId;
+    }
+    else
+    {
+        //alert("not pro");
+        localStorage.proVersion = 0;
+        //localStorage.productId = "";
+    }
 }

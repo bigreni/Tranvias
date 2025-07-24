@@ -13,17 +13,17 @@
       if (/(android)/i.test(navigator.userAgent)){
         interstitial = new admob.InterstitialAd({
             //dev
-            adUnitId: 'ca-app-pub-3940256099942544/1033173712'
+            //adUnitId: 'ca-app-pub-3940256099942544/1033173712'
             //prod
-            //adUnitId: 'ca-app-pub-9249695405712287/8454477151'
+            adUnitId: 'ca-app-pub-9249695405712287/8454477151'
           });
         }
         else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
             interstitial = new admob.InterstitialAd({
                 //dev
-                adUnitId: 'ca-app-pub-3940256099942544/4411468910'
+                //adUnitId: 'ca-app-pub-3940256099942544/4411468910'
                 //prod
-                //adUnitId: 'ca-app-pub-9249695405712287/9598291958'
+                adUnitId: 'ca-app-pub-9249695405712287/9598291958'
               });
         }
         registerAdEvents();
